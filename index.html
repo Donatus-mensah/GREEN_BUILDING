@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Building Creation - Architects & Builders | Ghana</title>
+    <meta name="description" content="Premium architectural design and building services in Ankaful Junction, Central Region, Ghana.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link id="favicon-link" rel="icon" href="https://pgblzmoibxrqyhowsvmg.supabase.co/storage/v1/object/public/green_house/logo2.jpeg" type="image/png">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10b981', // Vibrant Emerald Green
+                        'primary-dark': '#047857',
+                        secondary: '#D4A373', // Gold/Earth accent
+                        black: '#050505',
+                        'dark-surface': '#121212',
+                        'dark-card': '#1E1E1E',
+                        'gray-text': '#9ca3af',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    },
+                    animation: {
+                        'fade-in-down': 'fadeInDown 0.5s ease-out',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #f3f4f6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10b981; 
+            border-radius: 4px;
+        }
+
+        /* Hero Slider Transitions - Sliding Effect */
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: transform 1.2s ease-in-out, opacity 1s ease;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transform: translateX(100%); /* Start from right */
+            z-index: 0;
+        }
+        .hero-slide.active {
+            opacity: 1;
+            transform: translateX(0); /* Center */
+            z-index: 2;
+        }
+        .hero-slide.exit {
+            opacity: 0;
+            transform: translateX(-100%); /* Move to left */
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 50%, #050505 100%);
+        }
+
+        /* Page Transitions */
+        .page-content {
+            display: none;
+            animation: fadeIn 0.6s ease-out;
+        }
+        .page-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Enhanced Nav Link Effects */
+        .nav-link {
+            position: relative;
+            padding-bottom: 2px;
+        }
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            right: 0;
+            background-color: #10b981;
+            transition: width 0.3s ease-in-out;
+        }
+        .nav-link:hover::before, .nav-link.active::before {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Card Hover Effects & Rounding */
+        .clickable-card {
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 1.5rem; /* rounded-3xl */
+        }
+        .clickable-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px -10px rgba(16, 185, 129, 0.2);
+            border-color: #10b981;
+        }
+        
+        /* Interactive Box Styles */
+        .interactive-box {
+            border-radius: 2rem; /* rounded-4xl/full-ish */
+            transition: all 0.3s ease;
+        }
+        .interactive-box:hover {
+            transform: scale(1.02);
+            border-color: #10b981;
+            background-color: rgba(30, 30, 30, 0.8);
+        }
+
+        /* Navbar Transformation */
+        #navbar {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+        }
+        #navbar.nav-hidden {
+            transform: translateY(-100%);
+        }
+        #nav-container {
+            transition: height 0.3s ease;
+        }
+
+        /* Contact Form Styles */
+        .form-input:focus ~ label,
+        .form-input:not(:placeholder-shown) ~ label {
+            top: -0.5rem;
+            font-size: 0.75rem;
+            color: #10b981;
+            background-color: #1E1E1E;
+            padding: 0 0.5rem;
+        }
+
+        /* Tab Animations */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-btn.active {
+            background-color: #10b981;
+            color: #050505;
+            border-color: #10b981;
+        }
+        
+        /* Accordion Styles */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.4s ease;
+            opacity: 0;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+            color: #10b981;
+        }
+
+        /* New Image Card Styles for Services */
+        .image-card-bg {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .image-card-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.6) 100%);
+            z-index: -1;
+            transition: opacity 0.5s ease;
+        }
+        .image-card-bg:hover::before {
+            opacity: 0.85; /* Lighten on hover */
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.3) 100%);
+        }
+        .image-card-bg img.bg-target {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            transition: transform 0.7s ease;
+        }
+        .image-card-bg:hover img.bg-target {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased flex flex-col min-h-screen relative overflow-x-hidden">
+
+    <!-- Top Bar -->
+    <div class="bg-black border-b border-white/10 text-gray-400 py-3 text-xs tracking-wider hidden md:block z-50 relative">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <span class="hover:text-primary transition cursor-pointer flex items-center gap-2"><i class="fas fa-map-marker-alt text-primary"></i>Ankaful Junction, Central Region</span>
+                <a href="mailto:info@greenbuildingcreation.com" class="hover:text-primary transition flex items-center gap-2"><i class="fas fa-envelope text-primary"></i>info@greenbuildingcreation.com</a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <span><i class="fas fa-phone mr-2 text-primary"></i>030 293 3862</span>
+                <div class="flex space-x-4 border-l border-white/10 pl-4">
+                    <a href="#" class="hover:text-primary transition transform hover:scale-110"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-primary transition transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-primary transition transform hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation (Enhanced) -->
+    <nav id="navbar" class="fixed top-0 md:top-[41px] w-full z-40 transition-all duration-500 bg-transparent border-b border-transparent">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center h-24 transition-all duration-300" id="nav-container">
+                <!-- Logo -->
+                <a href="#" onclick="showPage('home'); return false;" class="flex items-center gap-3 group">
+                    <img src="https://pgblzmoibxrqyhowsvmg.supabase.co/storage/v1/object/public/green_house/logo2.jpeg" alt="GBC Logo" class="h-12 w-12 object-contain shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                    <div class="flex flex-col drop-shadow-md">
+                        <span class="font-sans font-bold text-xl text-white tracking-widest leading-none">GREEN<span class="text-primary">BUILDING</span></span>
+                        <span class="text-[10px] text-gray-300 tracking-[0.3em] uppercase group-hover:text-white transition">Creation</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu - ALL Links Visible -->
+                <div class="hidden xl:flex items-center space-x-8 text-[11px] font-bold uppercase tracking-[0.15em]">
+                    <a href="#" onclick="showPage('home'); return false;" id="nav-home" class="nav-link text-white hover:text-primary transition drop-shadow-md py-2">Home</a>
+                    <a href="#" onclick="showPage('about'); return false;" id="nav-about" class="nav-link text-white hover:text-primary transition drop-shadow-md py-2">About</a>
+                    <a href="#" onclick="showPage('services'); return false;" id="nav-services" class="nav-link text-white hover:text-primary transition drop-shadow-md py-2">Services</a>
+                    <a href="#" onclick="showPage('work'); return false;" id="nav-work" class="nav-link text-white hover:text-primary transition drop-shadow-md py-2">Works</a>
+                    <a href="#" onclick="showPage('team'); return false;" id="nav-team" class="nav-link text-white hover:text-primary transition drop-shadow-md py-2">Team</a>
+                    <a href="#" onclick="showPage('awards'); return false;" id="nav-awards" class="nav-link text-white hover:text-primary transition drop-shadow-md py-2">Awards</a>
+                    <a href="#" onclick="showPage('blog'); return false;" id="nav-blog" class="nav-link text-white hover:text-primary transition drop-shadow-md py-2">News</a>
+                    <a href="#" onclick="showPage('contact'); return false;" id="nav-contact" class="ml-4 px-7 py-3 border border-primary text-primary hover:bg-primary hover:text-black hover:border-transparent transition duration-300 rounded-full font-bold shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] transform hover:-translate-y-1">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="xl:hidden text-2xl text-white hover:text-primary focus:outline-none bg-black/40 p-2 rounded-2xl backdrop-blur-sm border border-white/10">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden xl:hidden bg-black/95 backdrop-blur-xl border-t border-white/10 absolute w-full left-0 shadow-2xl animate-fade-in-down rounded-b-3xl">
+            <div class="flex flex-col p-8 space-y-6 font-semibold uppercase tracking-widest text-sm text-center">
+                <a href="#" onclick="showPage('home'); mobileMenuToggle(); return false;" class="text-white hover:text-primary transition">Home</a>
+                <a href="#" onclick="showPage('about'); mobileMenuToggle(); return false;" class="text-white hover:text-primary transition">About Us</a>
+                <a href="#" onclick="showPage('services'); mobileMenuToggle(); return false;" class="text-white hover:text-primary transition">Services</a>
+                <a href="#" onclick="showPage('work'); mobileMenuToggle(); return false;" class="text-white hover:text-primary transition">Our Works</a>
+                <a href="#" onclick="showPage('team'); mobileMenuToggle(); return false;" class="text-white hover:text-primary transition">Our Team</a>
+                <a href="#" onclick="showPage('awards'); mobileMenuToggle(); return false;" class="text-white hover:text-primary transition">Awards</a>
+                <a href="#" onclick="showPage('blog'); mobileMenuToggle(); return false;" class="text-white hover:text-primary transition">News</a>
+                <a href="#" onclick="showPage('contact'); mobileMenuToggle(); return false;" class="text-primary border border-primary py-3 rounded-2xl hover:bg-primary hover:text-black transition">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== HOME PAGE ==================== -->
+    <div id="home" class="page-content active">
+        <!-- Hero Section -->
+        <section class="relative h-screen w-full overflow-hidden flex items-center justify-center">
+            <div class="absolute inset-0 z-0">
+                <div class="hero-slide active" style="background-image: url('https://pgblzmoibxrqyhowsvmg.supabase.co/storage/v1/object/public/green_house/WhatsApp%20Image%202026-01-23%20at%2012.51.05%20PM.jpeg');"></div>
+                <div class="hero-slide" style="background-image: url('https://pgblzmoibxrqyhowsvmg.supabase.co/storage/v1/object/public/green_house/WhatsApp%20Image%202026-01-23%20at%2012.51.06%20PM.jpeg');"></div>
+                <div class="hero-slide" style="background-image: url('https://pgblzmoibxrqyhowsvmg.supabase.co/storage/v1/object/public/green_house/WhatsApp%20Image%202026-01-23%20at%2012.52.22%20PM.jpeg');"></div>
+                <div class="hero-slide" style="background-image: url('https://pgblzmoibxrqyhowsvmg.supabase.co/storage/v1/object/public/green_house/WhatsApp%20Image%202026-01-23%20at%2012.52.21%20PM.jpeg');"></div>
+            </div>
+            <div class="absolute inset-0 hero-overlay z-10"></div>
+            <div class="relative z-20 container mx-auto px-6 text-center pt-20">
+                <div class="inline-block mb-4 border border-primary/50 px-6 py-2 rounded-full bg-black/30 backdrop-blur-sm animate-fade-in-down" style="animation-delay: 0.2s">
+                    <span class="text-primary text-xs font-bold uppercase tracking-[0.2em]">Architecture & Construction</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 leading-tight animate-fade-in-down" style="animation-delay: 0.4s">
+                    Building <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-300">Eco-Luxury</span> <br> Realities
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light animate-fade-in-down" style="animation-delay: 0.6s">
+                    Transforming the Ghanaian skyline with sustainable innovation and premium craftsmanship.
+                </p>
+                <div class="flex flex-col md:flex-row gap-6 justify-center animate-fade-in-down" style="animation-delay: 0.8s">
+                    <button onclick="showPage('work')" class="px-10 py-4 bg-primary text-black font-bold uppercase tracking-widest text-sm hover:bg-white transition duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] rounded-full">
+                        Our Works
+                    </button>
+                    <button onclick="showPage('contact')" class="px-10 py-4 bg-transparent border border-white text-white font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-black transition duration-300 rounded-full">
+                        Get a Quote
+                    </button>
+                </div>
+            </div>
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce text-white/50">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </div>
+        </section>
+
+        <!-- Intro Section (Summarized About) -->
+        <section class="py-24 bg-black relative">
+            <div class="absolute top-0 right-0 w-1/3 h-full bg-dark-surface opacity-50 skew-x-12 transform origin-top-right"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div data-aos="fade-right">
+                        <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">About Our Firm</span>
+                        <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-8">Building the Future, <br>One Project at a Time.</h2>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Green Building Creation isn't just a construction company; it's a team driven by a shared passion for creating exceptional spaces. Established in 2014, we combine modern technology with traditional integrity to build structures that stand the test of time.
+                        </p>
+                        <button onclick="showPage('about')" class="group text-white font-bold uppercase tracking-widest text-sm flex items-center hover:text-primary transition">
+                            Read Our Story <span class="ml-2 w-8 h-[2px] bg-primary group-hover:w-16 transition-all duration-300"></span>
+                        </button>
+                    </div>
+                    <div class="relative" data-aos="fade-left">
+                        <div class="border-2 border-primary/30 p-4 rounded-[2rem] interactive-box cursor-pointer">
+                            <img src="https://pgblzmoibxrqyhowsvmg.supabase.co/storage/v1/object/public/green_house/work.jpeg" alt="Blueprint" class="w-full h-auto grayscale hover:grayscale-0 transition duration-700 rounded-3xl">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Summary -->
+        <section class="py-24 bg-black">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">Portfolio</span>
+                    <h2 class="text-3xl font-serif font-bold text-white">Selected Works</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                     <!-- Project 1 -->
+                     <div class="group relative overflow-hidden h-[400px] cursor-pointer rounded-3xl clickable-card" onclick="viewProject(1)">
+                        <img src="https://images.unsplash.com/photo-1600596542815-e32c630bd138?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition duration-500"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
+                            <div class="border-l-4 border-primary pl-4 transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                                <h3 class="text-2xl font-bold text-white mb-1">La Villa De Bamako</h3>
+                                <p class="text-gray-300 text-sm">Residential</p>
+                                <span class="text-primary text-xs uppercase font-bold mt-2 inline-block">View Details</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="group relative overflow-hidden h-[400px] cursor-pointer rounded-3xl clickable-card" onclick="viewProject(2)">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition duration-500"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
+                            <div class="border-l-4 border-primary pl-4 transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                                <h3 class="text-2xl font-bold text-white mb-1">The Arch</h3>
+                                <p class="text-gray-300 text-sm">Mixed-Use</p>
+                                <span class="text-primary text-xs uppercase font-bold mt-2 inline-block">View Details</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="group relative overflow-hidden h-[400px] cursor-pointer rounded-3xl clickable-card" onclick="viewProject(3)">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition duration-500"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
+                            <div class="border-l-4 border-primary pl-4 transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                                <h3 class="text-2xl font-bold text-white mb-1">The Opulent</h3>
+                                <p class="text-gray-300 text-sm">Residential</p>
+                                <span class="text-primary text-xs uppercase font-bold mt-2 inline-block">View Details</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 4 -->
+                    <div class="group relative overflow-hidden h-[400px] cursor-pointer rounded-3xl clickable-card" onclick="viewProject(4)">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition duration-500"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
+                            <div class="border-l-4 border-primary pl-4 transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                                <h3 class="text-2xl font-bold text-white mb-1">GHIPSS Head Office</h3>
+                                <p class="text-gray-300 text-sm">Office Complex</p>
+                                <span class="text-primary text-xs uppercase font-bold mt-2 inline-block">View Details</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 5 -->
+                    <div class="group relative overflow-hidden h-[400px] cursor-pointer rounded-3xl clickable-card" onclick="viewProject(5)">
+                        <img src="https://images.unsplash.com/photo-1542841791-1925b02a2bbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition duration-500"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
+                            <div class="border-l-4 border-primary pl-4 transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                                <h3 class="text-2xl font-bold text-white mb-1">The Canary</h3>
+                                <p class="text-gray-300 text-sm">Apartments</p>
+                                <span class="text-primary text-xs uppercase font-bold mt-2 inline-block">View Details</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 6 -->
+                    <div class="group relative overflow-hidden h-[400px] cursor-pointer rounded-3xl clickable-card" onclick="viewProject(6)">
+                        <img src="https://images.unsplash.com/photo-1628624747186-a941c476b7ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition duration-500"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
+                            <div class="border-l-4 border-primary pl-4 transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                                <h3 class="text-2xl font-bold text-white mb-1">Akropong Villa</h3>
+                                <p class="text-gray-300 text-sm">Residential</p>
+                                <span class="text-primary text-xs uppercase font-bold mt-2 inline-block">View Details</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <button onclick="showPage('work')" class="px-8 py-3 border border-white/20 text-white hover:bg-white hover:text-black transition uppercase text-xs tracking-widest font-bold rounded-full">View All Projects</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Summary - Enhanced with Images -->
+        <section class="py-24 bg-dark-surface">
+            <div class="container mx-auto px-6">
+                 <div class="flex justify-between items-end mb-12">
+                     <div>
+                         <span class="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">Our Expertise</span>
+                         <h2 class="text-3xl font-serif font-bold text-white">What We Offer</h2>
+                     </div>
+                     <button onclick="showPage('services')" class="text-white hover:text-primary text-sm uppercase tracking-widest hidden md:block transition">View All Services <i class="fas fa-arrow-right ml-2"></i></button>
+                 </div>
+
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                     <div class="clickable-card image-card-bg p-8 border border-white/5 rounded-3xl flex flex-col justify-end min-h-[350px]" onclick="viewService('arch')">
+                         <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Architecture">
+                         <i class="fas fa-pencil-ruler text-3xl text-primary mb-6 relative z-10"></i>
+                         <h3 class="text-xl font-bold text-white mb-3 relative z-10">Architectural Design</h3>
+                         <p class="text-gray-300 text-sm mb-4 relative z-10">Transforming visions into sustainable, stunning blueprints.</p>
+                         <span class="text-primary text-xs font-bold uppercase tracking-widest relative z-10">Read More</span>
+                     </div>
+                     <div class="clickable-card image-card-bg p-8 border border-white/5 rounded-3xl flex flex-col justify-end min-h-[350px]" onclick="viewService('eng')">
+                         <img src="https://images.unsplash.com/photo-1581094794329-cd0f1df9389b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Engineering">
+                         <i class="fas fa-cogs text-3xl text-primary mb-6 relative z-10"></i>
+                         <h3 class="text-xl font-bold text-white mb-3 relative z-10">Engineering Services</h3>
+                         <p class="text-gray-300 text-sm mb-4 relative z-10">Reliable solutions for structural integrity and project efficiency.</p>
+                         <span class="text-primary text-xs font-bold uppercase tracking-widest relative z-10">Read More</span>
+                     </div>
+                     <div class="clickable-card image-card-bg p-8 border border-white/5 rounded-3xl flex flex-col justify-end min-h-[350px]" onclick="viewService('build')">
+                         <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Construction">
+                         <i class="fas fa-hard-hat text-3xl text-primary mb-6 relative z-10"></i>
+                         <h3 class="text-xl font-bold text-white mb-3 relative z-10">Construction & Renovation</h3>
+                         <p class="text-gray-300 text-sm mb-4 relative z-10">End-to-end management ensuring quality and timeline adherence.</p>
+                         <span class="text-primary text-xs font-bold uppercase tracking-widest relative z-10">Read More</span>
+                     </div>
+                 </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== ABOUT PAGE (ENHANCED) ==================== -->
+    <div id="about" class="page-content">
+        <!-- Header -->
+        <div class="relative h-[40vh] bg-dark-surface flex items-center justify-center">
+             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20"></div>
+             <div class="relative z-10 text-center">
+                 <h1 class="text-5xl font-serif font-bold text-white mb-2">About Us</h1>
+                 <div class="w-16 h-1 bg-primary mx-auto"></div>
+             </div>
+        </div>
+
+        <section class="py-24 bg-black">
+            <div class="container mx-auto px-6">
+                <!-- Who We Are & Interactive Tabs -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20 items-start">
+                    <!-- Left: Who We Are (Detailed) -->
+                    <div data-aos="fade-right">
+                        <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">Our Story & Legacy</span>
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mb-6">Building More Than Just Structures</h2>
+                        <p class="text-gray-400 mb-6 leading-relaxed text-lg">
+                            Green Building Creation isn't just a construction company; it's a team driven by a shared passion for creating exceptional, life-enhancing spaces. Established in 2014, we combine modern technology with traditional integrity to build structures that stand the test of time.
+                        </p>
+                        <p class="text-gray-400 mb-8 leading-relaxed">
+                            Our roots are deeply embedded in the principles of integrity, innovation, and sustainability. Over the last decade, we have evolved from a small team of passionate builders into a premier architectural firm known for merging luxury with eco-consciousness. We believe every brick laid should contribute to a greener, more sustainable future for Africa.
+                        </p>
+                        
+                        <!-- Statistics Row -->
+                        <div class="grid grid-cols-3 gap-6 border-t border-white/10 pt-8">
+                            <div>
+                                <span class="text-3xl font-bold text-primary block mb-1">10+</span>
+                                <span class="text-xs uppercase text-gray-500 tracking-widest">Years Experience</span>
+                            </div>
+                            <div>
+                                <span class="text-3xl font-bold text-white block mb-1">50+</span>
+                                <span class="text-xs uppercase text-gray-500 tracking-widest">Projects Done</span>
+                            </div>
+                            <div>
+                                <span class="text-3xl font-bold text-secondary block mb-1">100%</span>
+                                <span class="text-xs uppercase text-gray-500 tracking-widest">Client Satisfaction</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Interactive Philosophy Tabs -->
+                    <div class="bg-dark-card p-8 md:p-10 rounded-[2.5rem] border border-white/5 relative overflow-hidden" data-aos="fade-left">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+                        
+                        <h3 class="text-2xl font-serif font-bold text-white mb-6">Our Philosophy</h3>
+                        
+                        <!-- Tabs Navigation -->
+                        <div class="flex space-x-4 mb-8 border-b border-white/10 pb-4">
+                            <button onclick="openAboutTab('mission')" id="btn-mission" class="tab-btn active px-6 py-2 rounded-full border border-white/10 text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-white transition duration-300 focus:outline-none">Mission</button>
+                            <button onclick="openAboutTab('vision')" id="btn-vision" class="tab-btn px-6 py-2 rounded-full border border-white/10 text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-white transition duration-300 focus:outline-none">Vision</button>
+                        </div>
+
+                        <!-- Tab Content: Mission -->
+                        <div id="tab-mission" class="tab-content active">
+                            <div class="flex items-start gap-4 mb-4">
+                                <i class="fas fa-rocket text-3xl text-primary"></i>
+                                <h4 class="text-xl font-bold text-white">Our Mission</h4>
+                            </div>
+                            <p class="text-gray-400 leading-relaxed text-lg mb-4">
+                                To redefine the African construction landscape by delivering client-centric, professional services through innovations in green solutions. 
+                            </p>
+                            <p class="text-gray-400 leading-relaxed text-sm">
+                                We are strictly committed to reducing the environmental footprint of urbanization while maximizing aesthetic value and functionality for every client. Our mission extends beyond building; we aim to educate and inspire a movement towards sustainable living.
+                            </p>
+                        </div>
+
+                        <!-- Tab Content: Vision -->
+                        <div id="tab-vision" class="tab-content">
+                            <div class="flex items-start gap-4 mb-4">
+                                <i class="fas fa-eye text-3xl text-secondary"></i>
+                                <h4 class="text-xl font-bold text-white">Our Vision</h4>
+                            </div>
+                            <p class="text-gray-400 leading-relaxed text-lg mb-4">
+                                To become the undisputed leading architecture and construction firm in Sub-Saharan Africa. 
+                            </p>
+                            <p class="text-gray-400 leading-relaxed text-sm">
+                                We envision a future where our designs set the benchmark for aesthetic excellence, environmental responsibility, and community impact. We see a skyline defined by buildings that breathe, adapt, and sustain life.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why Choose Us (New Section) -->
+                <div class="mb-24" data-aos="fade-up">
+                    <div class="text-center mb-12">
+                        <span class="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">The Green Advantage</span>
+                        <h3 class="text-3xl font-serif font-bold text-white">Why Choose Us?</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="clickable-card image-card-bg p-8 border border-white/5 rounded-3xl flex flex-col justify-end min-h-[350px]" onclick="viewAdvantage('eco')">
+                            <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Eco">
+                            <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-3 relative z-10">Eco-Centric Approach</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed relative z-10">We don't just add solar panels; we design the entire structure to be energy efficient from the ground up.</p>
+                            <span class="text-primary text-xs font-bold uppercase tracking-widest mt-4 relative z-10">Discover More</span>
+                        </div>
+                        
+                        <div class="clickable-card image-card-bg p-8 border border-white/5 rounded-3xl flex flex-col justify-end min-h-[350px]" onclick="viewAdvantage('tailored')">
+                            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Tailored">
+                            <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                                <i class="fas fa-drafting-compass"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-3 relative z-10">Tailored Excellence</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed relative z-10">Every client is unique. We provide bespoke architectural solutions that reflect your personal style.</p>
+                            <span class="text-primary text-xs font-bold uppercase tracking-widest mt-4 relative z-10">Discover More</span>
+                        </div>
+                        
+                        <div class="clickable-card image-card-bg p-8 border border-white/5 rounded-3xl flex flex-col justify-end min-h-[350px]" onclick="viewAdvantage('quality')">
+                            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Quality">
+                            <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                                <i class="fas fa-hard-hat"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-3 relative z-10">Uncompromised Quality</h4>
+                            <p class="text-gray-300 text-sm leading-relaxed relative z-10">From the foundation to the finishing touches, we use premium materials and rigorous quality checks.</p>
+                            <span class="text-primary text-xs font-bold uppercase tracking-widest mt-4 relative z-10">Discover More</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enhanced Core Values Grid -->
+                <div data-aos="fade-up">
+                    <h3 class="text-2xl font-serif font-bold text-white mb-10 text-center">Our Core Values</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Value 1: Innovation -->
+                        <div class="group relative bg-dark-card border border-white/5 p-8 rounded-[2rem] hover:bg-white/5 transition duration-500 overflow-hidden shadow-lg">
+                            <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition duration-500 transform group-hover:scale-110">
+                                <i class="fas fa-lightbulb text-6xl text-primary"></i>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-2xl font-bold text-white mb-4 group-hover:text-primary transition">Innovation</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-6">We constantly research new eco-friendly materials and construction methods to stay ahead. Embracing cutting-edge design and technology is at the heart of what we do.</p>
+                                <div class="w-12 h-1 bg-white/10 group-hover:bg-primary transition duration-500"></div>
+                            </div>
+                        </div>
+
+                        <!-- Value 2: Expertise -->
+                        <div class="group relative bg-dark-card border border-white/5 p-8 rounded-[2rem] hover:bg-white/5 transition duration-500 overflow-hidden shadow-lg">
+                            <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition duration-500 transform group-hover:scale-110">
+                                <i class="fas fa-user-tie text-6xl text-secondary"></i>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-2xl font-bold text-white mb-4 group-hover:text-secondary transition">Expertise</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-6">Our team holds international certifications and has decades of combined experience. We possess the wealth of knowledge required to tackle complex projects with confidence.</p>
+                                <div class="w-12 h-1 bg-white/10 group-hover:bg-secondary transition duration-500"></div>
+                            </div>
+                        </div>
+
+                        <!-- Value 3: Integrity -->
+                        <div class="group relative bg-dark-card border border-white/5 p-8 rounded-[2rem] hover:bg-white/5 transition duration-500 overflow-hidden shadow-lg">
+                            <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition duration-500 transform group-hover:scale-110">
+                                <i class="fas fa-handshake text-6xl text-white"></i>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-2xl font-bold text-white mb-4 group-hover:text-primary transition">Integrity</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-6">Honesty and transparency define our client relationships. We believe in clear communication, fair pricing, and delivering exactly what we promise, every single time.</p>
+                                <div class="w-12 h-1 bg-white/10 group-hover:bg-primary transition duration-500"></div>
+                            </div>
+                        </div>
+
+                        <!-- Value 4: Sustainability -->
+                        <div class="group relative bg-dark-card border border-white/5 p-8 rounded-[2rem] hover:bg-white/5 transition duration-500 overflow-hidden shadow-lg">
+                            <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition duration-500 transform group-hover:scale-110">
+                                <i class="fas fa-tree text-6xl text-green-500"></i>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-2xl font-bold text-white mb-4 group-hover:text-green-500 transition">Sustainability</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-6">Our commitment to the planet is unwavering. We champion green building practices that reduce environmental impact and promote a healthier future for our communities.</p>
+                                <div class="w-12 h-1 bg-white/10 group-hover:bg-green-500 transition duration-500"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== SERVICES PAGE ==================== -->
+    <div id="services" class="page-content">
+        <!-- Header -->
+         <div class="relative h-[40vh] bg-dark-surface flex items-center justify-center">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20"></div>
+            <div class="relative z-10 text-center">
+                <h1 class="text-5xl font-serif font-bold text-white mb-2">Our Services</h1>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+            </div>
+       </div>
+
+       <section class="py-24 bg-black">
+           <div class="container mx-auto px-6">
+               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                   <!-- Service 1: Enhanced with Image BG -->
+                   <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('arch')">
+                       <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Arch">
+                       <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                           <i class="fas fa-pencil-ruler"></i>
+                       </div>
+                       <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider relative z-10">Architectural Design</h3>
+                       <p class="text-gray-300 text-sm leading-relaxed mb-4 relative z-10">Our skilled architects translate your vision into stunning and functional designs...</p>
+                       <span class="text-primary text-xs font-bold uppercase tracking-widest flex items-center relative z-10">View Details <i class="fas fa-plus ml-2"></i></span>
+                   </div>
+                   
+                   <!-- Service 2: Enhanced with Image BG -->
+                   <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('eng')">
+                        <img src="https://images.unsplash.com/photo-1581094794329-cd0f1df9389b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Eng">
+                        <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider relative z-10">Engineering Services</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-4 relative z-10">Our team of qualified engineers provides reliable solutions for structural integrity...</p>
+                        <span class="text-primary text-xs font-bold uppercase tracking-widest flex items-center relative z-10">View Details <i class="fas fa-plus ml-2"></i></span>
+                    </div>
+
+                    <!-- Service 3: Enhanced with Image BG -->
+                    <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('remodel')">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Remodel">
+                        <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider relative z-10">Building Remodelling</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-4 relative z-10">Breathe new life into your existing space! We offer comprehensive remodelling...</p>
+                        <span class="text-primary text-xs font-bold uppercase tracking-widest flex items-center relative z-10">View Details <i class="fas fa-plus ml-2"></i></span>
+                    </div>
+
+                    <!-- Service 4: Enhanced with Image BG -->
+                    <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('pm')">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="PM">
+                        <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider relative z-10">Project Management</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-4 relative z-10">Our experienced project managers oversee every aspect of your project...</p>
+                        <span class="text-primary text-xs font-bold uppercase tracking-widest flex items-center relative z-10">View Details <i class="fas fa-plus ml-2"></i></span>
+                    </div>
+
+                    <!-- Service 5: Enhanced with Image BG -->
+                    <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('reno')">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Reno">
+                        <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider relative z-10">Building Renovations</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-4 relative z-10">Looking to revitalise your existing building? Our renovation expertise allows us...</p>
+                        <span class="text-primary text-xs font-bold uppercase tracking-widest flex items-center relative z-10">View Details <i class="fas fa-plus ml-2"></i></span>
+                    </div>
+
+                    <!-- Service 6: Enhanced with Image BG -->
+                    <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('survey')">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Survey">
+                        <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider relative z-10">Surveying</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-4 relative z-10">Accurate land and building surveys are crucial for informed decision-making...</p>
+                        <span class="text-primary text-xs font-bold uppercase tracking-widest flex items-center relative z-10">View Details <i class="fas fa-plus ml-2"></i></span>
+                    </div>
+               </div>
+           </div>
+       </section>
+    </div>
+
+    <!-- ==================== NEW: SERVICE DETAIL VIEW ==================== -->
+    <div id="service-detail-view" class="page-content">
+        <div class="bg-black pt-24 pb-24 min-h-screen">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <button onclick="showPage('services')" class="text-white hover:text-primary mb-8 flex items-center group">
+                    <i class="fas fa-long-arrow-alt-left mr-2 group-hover:-translate-x-2 transition"></i> Back to Services
+                </button>
+                <div class="bg-dark-card p-10 border border-white/10 rounded-[2rem]">
+                    <!-- Added Picture here as requested -->
+                    <div class="h-64 w-full rounded-2xl overflow-hidden mb-8 relative border border-white/10">
+                        <img id="serv-img" src="" class="w-full h-full object-cover transform hover:scale-105 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    
+                    <div class="flex items-center gap-6 mb-8 border-b border-white/10 pb-8">
+                        <div class="w-20 h-20 bg-dark-surface flex items-center justify-center text-primary text-4xl rounded-full border border-primary/20">
+                            <i id="serv-icon" class="fas fa-tools"></i>
+                        </div>
+                        <h1 id="serv-title" class="text-4xl font-serif font-bold text-white">Service Title</h1>
+                    </div>
+                    <div id="serv-content" class="text-gray-400 leading-relaxed text-lg space-y-6">
+                        <!-- Content injected via JS -->
+                    </div>
+                    <div class="mt-10 pt-10 border-t border-white/10">
+                        <button onclick="showPage('contact')" class="px-8 py-3 bg-primary text-black font-bold uppercase tracking-widest hover:bg-white transition rounded-full">Request This Service</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== NEW: ADVANTAGE DETAIL VIEW ==================== -->
+    <div id="advantage-detail-view" class="page-content">
+        <div class="bg-black pt-24 pb-24 min-h-screen">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <button onclick="showPage('about')" class="text-white hover:text-primary mb-8 flex items-center group">
+                    <i class="fas fa-long-arrow-alt-left mr-2 group-hover:-translate-x-2 transition"></i> Back to About Us
+                </button>
+                <div class="bg-dark-card p-10 border border-white/10 rounded-[2rem]">
+                    <div class="h-72 w-full rounded-2xl overflow-hidden mb-8 relative border border-white/10">
+                        <img id="adv-img" src="" class="w-full h-full object-cover transform hover:scale-105 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    
+                    <div class="flex items-center gap-6 mb-8 border-b border-white/10 pb-8">
+                        <div class="w-20 h-20 bg-dark-surface flex items-center justify-center text-primary text-4xl rounded-full border border-primary/20">
+                            <i id="adv-icon" class="fas fa-star"></i>
+                        </div>
+                        <h1 id="adv-title" class="text-4xl font-serif font-bold text-white">Advantage Title</h1>
+                    </div>
+                    <div id="adv-content" class="text-gray-400 leading-relaxed text-lg space-y-6">
+                        <!-- Content injected via JS -->
+                    </div>
+                    <div class="mt-10 pt-10 border-t border-white/10">
+                        <button onclick="showPage('contact')" class="px-8 py-3 border border-white/20 text-white font-bold uppercase tracking-widest hover:bg-white hover:text-black transition rounded-full">Discuss Your Project</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== OUR TEAM PAGE ==================== -->
+    <div id="team" class="page-content">
+        <!-- Header -->
+        <div class="relative h-[40vh] bg-dark-surface flex items-center justify-center">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20"></div>
+            <div class="relative z-10 text-center">
+                <span class="text-primary font-bold uppercase tracking-widest text-sm mb-2 block animate-fade-in-up">The Talent Behind Your Vision</span>
+                <h1 class="text-5xl font-serif font-bold text-white mb-2">Our Team</h1>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+            </div>
+       </div>
+
+       <section class="py-24 bg-black">
+           <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                     <div class="group cursor-pointer text-center clickable-card p-4 rounded-3xl bg-dark-card border border-white/5 hover:border-primary" onclick="viewTeamMember('kwame')">
+                        <div class="overflow-hidden mb-6 relative rounded-3xl">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-[400px] object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                        </div>
+                        <h4 class="text-white text-xl font-bold">Kwame Asante</h4>
+                        <p class="text-primary text-xs uppercase tracking-widest mt-1">Principal Architect</p>
+                        <p class="text-gray-500 text-xs mt-4 group-hover:text-white transition">View Profile &rarr;</p>
+                     </div>
+                     
+                     <div class="group cursor-pointer text-center clickable-card p-4 rounded-3xl bg-dark-card border border-white/5 hover:border-primary" onclick="viewTeamMember('kojo')">
+                        <div class="overflow-hidden mb-6 relative rounded-3xl">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-[400px] object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                        </div>
+                        <h4 class="text-white text-xl font-bold">Kojo Boateng</h4>
+                        <p class="text-primary text-xs uppercase tracking-widest mt-1">Operations Lead</p>
+                        <p class="text-gray-500 text-xs mt-4 group-hover:text-white transition">View Profile &rarr;</p>
+                     </div>
+                     
+                     <div class="group cursor-pointer text-center clickable-card p-4 rounded-3xl bg-dark-card border border-white/5 hover:border-primary" onclick="viewTeamMember('ama')">
+                        <div class="overflow-hidden mb-6 relative rounded-3xl">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-[400px] object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                        </div>
+                        <h4 class="text-white text-xl font-bold">Ama Foriwaah</h4>
+                        <p class="text-primary text-xs uppercase tracking-widest mt-1">Project Lead</p>
+                        <p class="text-gray-500 text-xs mt-4 group-hover:text-white transition">View Profile &rarr;</p>
+                     </div>
+                </div>
+           </div>
+       </section>
+    </div>
+
+    <!-- ==================== AWARDS PAGE (ENHANCED) ==================== -->
+    <div id="awards" class="page-content">
+        <!-- Header -->
+        <div class="relative h-[40vh] bg-dark-surface flex items-center justify-center">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1531384441138-2736e62e0919?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20"></div>
+            <div class="relative z-10 text-center">
+                <h1 class="text-5xl font-serif font-bold text-white mb-2">Awards</h1>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+            </div>
+       </div>
+
+       <section class="py-24 bg-black">
+           <div class="container mx-auto px-6">
+               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                   <!-- Award 1 -->
+                   <div class="clickable-card bg-dark-card border border-white/5 text-center group hover:border-primary transition duration-300 overflow-hidden rounded-3xl relative" onclick="viewAward(1)">
+                       <div class="h-64 overflow-hidden relative">
+                           <img src="https://images.unsplash.com/photo-1628624747186-a941c476b7ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-40 transition duration-700">
+                           <div class="absolute inset-0 bg-black/60 group-hover:bg-black/30 transition duration-500"></div>
+                           <div class="absolute inset-0 flex items-center justify-center">
+                               <span class="text-primary font-bold text-6xl drop-shadow-lg scale-100 group-hover:scale-125 transition duration-500">2023</span>
+                           </div>
+                           
+                           <!-- Hover Overlay -->
+                           <div class="absolute inset-0 bg-primary/10 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition duration-500 flex items-end justify-center pb-8">
+                                <span class="px-6 py-2 bg-white text-black font-bold uppercase text-xs tracking-widest rounded-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">View Details</span>
+                           </div>
+                       </div>
+                       <div class="p-10 relative z-10 bg-dark-card">
+                           <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition">Best Sustainable Design</h3>
+                           <p class="text-xs uppercase tracking-widest text-gray-500">Ghana Architecture Awards</p>
+                       </div>
+                   </div>
+                   
+                   <!-- Award 2 -->
+                   <div class="clickable-card bg-dark-card border border-white/5 text-center group hover:border-primary transition duration-300 overflow-hidden rounded-3xl relative" onclick="viewAward(2)">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1600596542815-e32c630bd138?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-40 transition duration-700">
+                            <div class="absolute inset-0 bg-black/60 group-hover:bg-black/30 transition duration-500"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-primary font-bold text-6xl drop-shadow-lg scale-100 group-hover:scale-125 transition duration-500">2021</span>
+                            </div>
+                            
+                            <!-- Hover Overlay -->
+                           <div class="absolute inset-0 bg-primary/10 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition duration-500 flex items-end justify-center pb-8">
+                                <span class="px-6 py-2 bg-white text-black font-bold uppercase text-xs tracking-widest rounded-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">View Details</span>
+                           </div>
+                        </div>
+                        <div class="p-10 relative z-10 bg-dark-card">
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition">Residential Project of the Year</h3>
+                            <p class="text-xs uppercase tracking-widest text-gray-500">Central Region Builders</p>
+                        </div>
+                    </div>
+
+                    <!-- Award 3 -->
+                    <div class="clickable-card bg-dark-card border border-white/5 text-center group hover:border-primary transition duration-300 overflow-hidden rounded-3xl relative" onclick="viewAward(3)">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-40 transition duration-700">
+                            <div class="absolute inset-0 bg-black/60 group-hover:bg-black/30 transition duration-500"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-primary font-bold text-6xl drop-shadow-lg scale-100 group-hover:scale-125 transition duration-500">2019</span>
+                            </div>
+                            
+                            <!-- Hover Overlay -->
+                           <div class="absolute inset-0 bg-primary/10 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition duration-500 flex items-end justify-center pb-8">
+                                <span class="px-6 py-2 bg-white text-black font-bold uppercase text-xs tracking-widest rounded-full transform translate-y-4 group-hover:translate-y-0 transition duration-500">View Details</span>
+                           </div>
+                        </div>
+                        <div class="p-10 relative z-10 bg-dark-card">
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition">Safety Excellence</h3>
+                            <p class="text-xs uppercase tracking-widest text-gray-500">Construction Guild</p>
+                        </div>
+                    </div>
+               </div>
+           </div>
+       </section>
+    </div>
+
+    <!-- ==================== AWARD DETAIL VIEW (ENHANCED) ==================== -->
+    <div id="award-detail-view" class="page-content">
+        <div class="bg-black pt-24 pb-24 min-h-screen">
+            <div class="container mx-auto px-6 max-w-4xl text-center">
+                <button onclick="showPage('awards')" class="text-white hover:text-primary mb-8 flex items-center justify-center group">
+                    <i class="fas fa-long-arrow-alt-left mr-2 group-hover:-translate-x-2 transition"></i> Back to Awards
+                </button>
+                <div class="bg-dark-card p-0 border border-white/10 rounded-[2rem] relative overflow-hidden">
+                    
+                    <!-- Hero Image for Award Detail -->
+                    <div class="h-64 md:h-80 w-full relative">
+                         <img id="aw-img" src="" class="w-full h-full object-cover opacity-50">
+                         <div class="absolute inset-0 bg-gradient-to-t from-dark-card to-transparent"></div>
+                         <div class="absolute bottom-0 left-0 w-full p-8 text-center">
+                             <span id="aw-year" class="text-primary font-bold text-7xl block mb-2 drop-shadow-[0_0_15px_rgba(16,185,129,0.5)]">Year</span>
+                         </div>
+                    </div>
+
+                    <div class="p-10 md:p-14 relative z-10">
+                        <h1 id="aw-title" class="text-4xl md:text-5xl font-serif font-bold text-white mb-4">Award Title</h1>
+                        <p id="aw-org" class="text-gray-500 text-sm uppercase tracking-[0.2em] mb-12 border-b border-white/5 pb-8 inline-block">Organization</p>
+                        
+                        <div id="aw-desc" class="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto space-y-6">
+                            <!-- Content -->
+                        </div>
+
+                        <div class="mt-12 pt-12 border-t border-white/5">
+                            <button onclick="showPage('contact')" class="px-8 py-3 border border-white/20 text-white hover:bg-white hover:text-black transition uppercase text-xs tracking-widest font-bold rounded-full">Work With Award Winners</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PROJECTS PAGE ==================== -->
+    <div id="work" class="page-content">
+         <!-- Header -->
+         <div class="relative h-[40vh] bg-dark-surface flex items-center justify-center">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20"></div>
+            <div class="relative z-10 text-center">
+                <h1 class="text-5xl font-serif font-bold text-white mb-2">Our Works</h1>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+            </div>
+       </div>
+
+       <section class="py-24 bg-black">
+           <div class="container mx-auto px-6">
+               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                   <!-- Project Item 1 -->
+                   <div class="group relative overflow-hidden h-[400px] cursor-pointer rounded-3xl clickable-card" onclick="viewProject(1)">
+                       <img src="https://images.unsplash.com/photo-1600596542815-e32c630bd138?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                       <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition duration-500"></div>
+                       <div class="absolute bottom-0 left-0 p-8 w-full">
+                           <div class="border-l-4 border-primary pl-4 transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                               <h3 class="text-2xl font-bold text-white mb-1">La Villa De Bamako</h3>
+                               <p class="text-gray-300 text-sm">Residential</p>
+                               <span class="text-primary text-xs uppercase font-bold mt-2 inline-block group-hover:translate-x-2 transition">View Project &rarr;</span>
+                           </div>
+                       </div>
+                   </div>
+
+                   <!-- Project Item 2 -->
+                   <div class="group relative overflow-hidden h-[400px] cursor-pointer rounded-3xl clickable-card" onclick="viewProject(2)">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition duration-500"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
+                            <div class="border-l-4 border-primary pl-4 transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                                <h3 class="text-2xl font-bold text-white mb-1">The Arch</h3>
+                                <p class="text-gray-300 text-sm">Mixed-Use</p>
+                                <span class="text-primary text-xs uppercase font-bold mt-2 inline-block group-hover:translate-x-2 transition">View Project &rarr;</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Item 3 -->
+                    <div class="group relative overflow-hidden h-[400px] cursor-pointer rounded-3xl clickable-card" onclick="viewProject(3)">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition duration-500"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
+                            <div class="border-l-4 border-primary pl-4 transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                                <h3 class="text-2xl font-bold text-white mb-1">The Opulent</h3>
+                                <p class="text-gray-300 text-sm">Residential</p>
+                                <span class="text-primary text-xs uppercase font-bold mt-2 inline-block group-hover:translate-x-2 transition">View Project &rarr;</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Item 4 -->
+                    <div class="group relative overflow-hidden h-[400px] cursor-pointer rounded-3xl clickable-card" onclick="viewProject(4)">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition duration-500"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
+                            <div class="border-l-4 border-primary pl-4 transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                                <h3 class="text-2xl font-bold text-white mb-1">GHIPSS Head Office</h3>
+                                <p class="text-gray-300 text-sm">Office Complex</p>
+                                <span class="text-primary text-xs uppercase font-bold mt-2 inline-block group-hover:translate-x-2 transition">View Project &rarr;</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Item 5 -->
+                    <div class="group relative overflow-hidden h-[400px] cursor-pointer rounded-3xl clickable-card" onclick="viewProject(5)">
+                        <img src="https://images.unsplash.com/photo-1542841791-1925b02a2bbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition duration-500"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
+                            <div class="border-l-4 border-primary pl-4 transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                                <h3 class="text-2xl font-bold text-white mb-1">The Canary</h3>
+                                <p class="text-gray-300 text-sm">Apartments</p>
+                                <span class="text-primary text-xs uppercase font-bold mt-2 inline-block group-hover:translate-x-2 transition">View Project &rarr;</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Item 6 -->
+                    <div class="group relative overflow-hidden h-[400px] cursor-pointer rounded-3xl clickable-card" onclick="viewProject(6)">
+                        <img src="https://images.unsplash.com/photo-1628624747186-a941c476b7ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition duration-500"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
+                            <div class="border-l-4 border-primary pl-4 transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                                <h3 class="text-2xl font-bold text-white mb-1">Akropong Villa</h3>
+                                <p class="text-gray-300 text-sm">Residential</p>
+                                <span class="text-primary text-xs uppercase font-bold mt-2 inline-block group-hover:translate-x-2 transition">View Project &rarr;</span>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+           </div>
+       </section>
+    </div>
+
+    <!-- ==================== PROJECT DETAIL VIEW ==================== -->
+    <div id="project-detail-view" class="page-content">
+        <div class="bg-black pt-24 pb-24 min-h-screen">
+            <div class="container mx-auto px-6">
+                <button onclick="showPage('work')" class="text-white hover:text-primary mb-8 flex items-center group">
+                    <i class="fas fa-long-arrow-alt-left mr-2 group-hover:-translate-x-2 transition"></i> Back to Projects
+                </button>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div class="lg:col-span-2">
+                        <h1 id="proj-title" class="text-4xl md:text-6xl font-serif font-bold text-white mb-4">Project Title</h1>
+                        <p id="proj-category" class="text-primary font-bold uppercase tracking-widest text-sm mb-8">Category</p>
+                        
+                        <div class="mb-8 overflow-hidden rounded-[2rem] shadow-lg">
+                            <img id="proj-main-img" src="" class="w-full h-auto object-cover">
+                        </div>
+
+                        <div class="prose prose-invert prose-lg max-w-none text-gray-400 mb-12" id="proj-description">
+                            <!-- Desc -->
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white mb-6 border-l-4 border-primary pl-4">Gallery</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="proj-gallery">
+                            <!-- JS Injection -->
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="lg:col-span-1">
+                        <div class="bg-dark-card p-8 border border-white/10 sticky top-24 rounded-[2rem]">
+                            <h4 class="text-xl font-bold text-white mb-6 border-b border-white/10 pb-4">Details</h4>
+                            <ul class="space-y-6 text-sm">
+                                <li>
+                                    <span class="block text-gray-500 uppercase text-xs tracking-widest mb-1">Client</span>
+                                    <span id="proj-client" class="text-white font-medium">Name</span>
+                                </li>
+                                <li>
+                                    <span class="block text-gray-500 uppercase text-xs tracking-widest mb-1">Location</span>
+                                    <span id="proj-location" class="text-white font-medium">Loc</span>
+                                </li>
+                                <li>
+                                    <span class="block text-gray-500 uppercase text-xs tracking-widest mb-1">Year</span>
+                                    <span id="proj-year" class="text-white font-medium">Year</span>
+                                </li>
+                                <li>
+                                    <span class="block text-gray-500 uppercase text-xs tracking-widest mb-1">Size</span>
+                                    <span id="proj-size" class="text-white font-medium">Size</span>
+                                </li>
+                            </ul>
+                            <button onclick="showPage('contact')" class="w-full mt-8 py-3 bg-primary text-black font-bold uppercase tracking-widest hover:bg-white transition rounded-full">Start Similar Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MEMBER PROFILE VIEW ==================== -->
+    <div id="member-profile" class="page-content">
+        <div class="bg-black pt-24 pb-24 min-h-screen">
+             <div class="container mx-auto px-6">
+                 <button onclick="showPage('team')" class="text-white hover:text-primary mb-8 flex items-center group">
+                    <i class="fas fa-long-arrow-alt-left mr-2 group-hover:-translate-x-2 transition"></i> Back to Team
+                </button>
+
+                <div class="flex flex-col md:flex-row bg-dark-card border border-white/10 overflow-hidden rounded-[2rem]">
+                    <div class="md:w-2/5 relative">
+                        <img id="profile-img" src="" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-primary/20 mix-blend-overlay"></div>
+                    </div>
+                    <div class="md:w-3/5 p-10 md:p-16">
+                        <span id="profile-role" class="text-primary font-bold uppercase tracking-widest text-xs mb-2 block">Role</span>
+                        <h1 id="profile-name" class="text-4xl font-serif font-bold text-white mb-8">Name</h1>
+                        
+                        <p id="profile-bio" class="text-gray-400 text-lg leading-relaxed mb-8">Bio</p>
+                        
+                        <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-4">Expertise</h4>
+                        <ul id="profile-expertise" class="space-y-2 text-gray-400 text-sm mb-8">
+                            <!-- JS -->
+                        </ul>
+
+                        <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-4">Connect</h4>
+                        <div id="profile-socials" class="flex space-x-4">
+                            <!-- Socials injected here -->
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </div>
+
+    <!-- ==================== BLOG PAGE (ENHANCED) ==================== -->
+    <div id="blog" class="page-content">
+        <!-- Header -->
+        <div class="relative h-[40vh] bg-dark-surface flex items-center justify-center">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518091043644-c1d4457512c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20"></div>
+            <div class="relative z-10 text-center">
+                <h1 class="text-5xl font-serif font-bold text-white mb-2">The Journal</h1>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+                <p class="text-gray-300 mt-4 text-lg">Insights on Sustainable Living & Architecture</p>
+            </div>
+       </div>
+
+        <div class="bg-black pt-24 pb-24">
+             <div class="container mx-auto px-6">
+                <!-- Blog Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                     <!-- Blog Post Card 1 -->
+                     <div class="bg-dark-card group cursor-pointer clickable-card rounded-[2rem] overflow-hidden border border-white/5 hover:border-primary transition duration-500" onclick="viewBlogPost(1)">
+                         <div class="h-64 overflow-hidden relative">
+                             <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                             <div class="absolute top-4 left-4 bg-primary text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Sustainability</div>
+                         </div>
+                         <div class="p-8">
+                             <div class="flex items-center text-gray-500 text-xs mb-4">
+                                 <i class="far fa-calendar mr-2"></i> Oct 15, 2023
+                                 <span class="mx-2">|</span>
+                                 <i class="far fa-user mr-2"></i> Kwame Asante
+                             </div>
+                             <h3 class="text-2xl font-bold text-white mb-4 leading-tight group-hover:text-primary transition">The Future of Sustainable Design in Accra</h3>
+                             <p class="text-gray-400 text-sm mb-6 line-clamp-3">As Accra grows, so does the need for eco-conscious building. Discover how we are integrating green technology into urban residential projects.</p>
+                             <span class="text-primary text-xs font-bold uppercase tracking-widest flex items-center group-hover:translate-x-2 transition">Read Article <i class="fas fa-arrow-right ml-2"></i></span>
+                         </div>
+                     </div>
+
+                     <!-- Blog Post Card 2 -->
+                     <div class="bg-dark-card group cursor-pointer clickable-card rounded-[2rem] overflow-hidden border border-white/5 hover:border-primary transition duration-500" onclick="viewBlogPost(2)">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1593153967854-5c1bc0b9ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                            <div class="absolute top-4 left-4 bg-secondary text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Materials</div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-center text-gray-500 text-xs mb-4">
+                                <i class="far fa-calendar mr-2"></i> Nov 2, 2023
+                                <span class="mx-2">|</span>
+                                <i class="far fa-user mr-2"></i> Ama Foriwaah
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-4 leading-tight group-hover:text-primary transition">Bamboo & Earth: Modernizing Local Materials</h3>
+                            <p class="text-gray-400 text-sm mb-6 line-clamp-3">Exploring the resurgence of traditional Ghanaian building materials in modern luxury architecture. Strength meets sustainability.</p>
+                            <span class="text-primary text-xs font-bold uppercase tracking-widest flex items-center group-hover:translate-x-2 transition">Read Article <i class="fas fa-arrow-right ml-2"></i></span>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post Card 3 -->
+                    <div class="bg-dark-card group cursor-pointer clickable-card rounded-[2rem] overflow-hidden border border-white/5 hover:border-primary transition duration-500" onclick="viewBlogPost(3)">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1558002038-1091773817a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                            <div class="absolute top-4 left-4 bg-white text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Technology</div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-center text-gray-500 text-xs mb-4">
+                                <i class="far fa-calendar mr-2"></i> Dec 10, 2023
+                                <span class="mx-2">|</span>
+                                <i class="far fa-user mr-2"></i> Kojo Boateng
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-4 leading-tight group-hover:text-primary transition">Smart Homes: Energy Efficiency 101</h3>
+                            <p class="text-gray-400 text-sm mb-6 line-clamp-3">Smart home automation isn't just about convenience; it's a key player in reducing your home's energy consumption. Here's how.</p>
+                            <span class="text-primary text-xs font-bold uppercase tracking-widest flex items-center group-hover:translate-x-2 transition">Read Article <i class="fas fa-arrow-right ml-2"></i></span>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </div>
+    
+    <!-- ==================== BLOG POST DETAIL VIEW (ENHANCED) ==================== -->
+    <div id="blog-post-view" class="page-content">
+        <div class="bg-black pt-24 pb-24 min-h-screen">
+             <div class="container mx-auto px-6 max-w-4xl">
+                <button onclick="showPage('blog')" class="text-white hover:text-primary mb-8 flex items-center group">
+                    <i class="fas fa-long-arrow-alt-left mr-2 group-hover:-translate-x-2 transition"></i> Back to Journal
+                </button>
+                
+                <article class="bg-dark-card border border-white/5 rounded-[2.5rem] overflow-hidden">
+                    <!-- Hero Image for Article -->
+                    <div class="h-96 w-full relative">
+                        <img id="post-img" src="" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-card via-transparent to-transparent"></div>
+                    </div>
+
+                    <div class="p-10 md:p-16">
+                        <!-- Meta Info -->
+                        <div class="flex flex-wrap items-center gap-6 mb-8 text-sm text-gray-400 border-b border-white/10 pb-8">
+                            <span id="post-category" class="text-primary font-bold uppercase tracking-widest">Category</span>
+                            <span class="w-1 h-1 bg-gray-600 rounded-full"></span>
+                            <span id="post-date">Date</span>
+                            <span class="w-1 h-1 bg-gray-600 rounded-full"></span>
+                            <span id="post-author" class="text-white">Author</span>
+                        </div>
+
+                        <h1 id="post-title" class="text-4xl md:text-5xl font-serif font-bold text-white mb-10 leading-tight">Title</h1>
+                        
+                        <!-- Content Body -->
+                        <div id="post-content" class="prose prose-lg prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
+                            <!-- Injected Content -->
+                        </div>
+
+                        <!-- Article Footer -->
+                        <div class="mt-16 pt-10 border-t border-white/10 flex justify-between items-center">
+                            <span class="text-white font-bold uppercase tracking-widest text-xs">Share this article</span>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-gray-400 hover:text-primary transition"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-primary transition"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-primary transition"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+             </div>
+        </div>
+    </div>
+
+    <!-- ==================== CONTACT PAGE (ENHANCED) ==================== -->
+    <div id="contact" class="page-content">
+       <div class="relative h-[40vh] bg-dark-surface flex items-center justify-center">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1423666639041-f142fcb96313?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20"></div>
+            <div class="relative z-10 text-center">
+                <h1 class="text-5xl font-serif font-bold text-white mb-2">Contact Us</h1>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+                <p class="text-gray-300 mt-4 text-lg">We’d love to hear from you.</p>
+            </div>
+       </div>
+
+       <!-- Enhanced Contact Section with Grid Layout & Features -->
+       <section class="py-24 bg-black relative">
+           <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
+                    <!-- Column 1: Contact Info & Map Details -->
+                    <div class="space-y-12" data-aos="fade-right">
+                        <div>
+                            <span class="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">Get In Touch</span>
+                            <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mb-6">Let's Discuss Your Project</h2>
+                            <p class="text-gray-400 leading-relaxed">
+                                Whether you have a specific project in mind or just want to explore the possibilities, our team is ready to assist you. Visit us, call us, or send us a message.
+                            </p>
+                        </div>
+
+                        <!-- Info Cards (Pergola Style Features) -->
+                        <div class="grid grid-cols-1 gap-6">
+                            <div class="flex items-start p-6 bg-dark-card border border-white/5 rounded-3xl hover:border-primary/50 transition duration-300 group hover:-translate-y-1 shadow-lg">
+                                <div class="w-12 h-12 rounded-full bg-dark-surface border border-white/10 flex items-center justify-center text-primary text-xl flex-shrink-0 group-hover:bg-primary group-hover:text-black transition">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="ml-6">
+                                    <h4 class="text-white font-bold text-lg mb-1">Visit Our Office</h4>
+                                    <p class="text-gray-400 text-sm">Ankaful Junction, Central Region, Ghana</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start p-6 bg-dark-card border border-white/5 rounded-3xl hover:border-primary/50 transition duration-300 group hover:-translate-y-1 shadow-lg">
+                                <div class="w-12 h-12 rounded-full bg-dark-surface border border-white/10 flex items-center justify-center text-primary text-xl flex-shrink-0 group-hover:bg-primary group-hover:text-black transition">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="ml-6">
+                                    <h4 class="text-white font-bold text-lg mb-1">Call Us</h4>
+                                    <div class="flex flex-col text-gray-400 text-sm">
+                                        <a href="tel:0302933862" class="hover:text-primary transition">030 293 3862</a>
+                                        <a href="tel:0240908531" class="hover:text-primary transition">024 090 8531</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start p-6 bg-dark-card border border-white/5 rounded-3xl hover:border-primary/50 transition duration-300 group hover:-translate-y-1 shadow-lg">
+                                <div class="w-12 h-12 rounded-full bg-dark-surface border border-white/10 flex items-center justify-center text-primary text-xl flex-shrink-0 group-hover:bg-primary group-hover:text-black transition">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="ml-6">
+                                    <h4 class="text-white font-bold text-lg mb-1">Email Us</h4>
+                                    <a href="mailto:info@greenbuildingcreation.com" class="text-gray-400 text-sm hover:text-primary transition">info@greenbuildingcreation.com</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Socials -->
+                        <div>
+                            <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-4">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-12 h-12 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition rounded-full"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="w-12 h-12 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition rounded-full"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="w-12 h-12 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition rounded-full"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="w-12 h-12 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition rounded-full"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Enhanced Form -->
+                    <div class="bg-dark-card p-8 md:p-12 rounded-[2.5rem] border border-white/5 shadow-2xl relative overflow-hidden" data-aos="fade-left">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+                        
+                        <h3 class="text-2xl font-bold text-white mb-8">Send a Message</h3>
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="relative">
+                                    <input type="text" id="name" placeholder=" " class="form-input block w-full px-4 py-4 text-white bg-dark-surface border border-white/10 rounded-xl focus:border-primary focus:ring-0 focus:outline-none appearance-none peer" />
+                                    <label for="name" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-dark-surface px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 cursor-text">Name</label>
+                                </div>
+                                <div class="relative">
+                                    <input type="tel" id="phone" placeholder=" " class="form-input block w-full px-4 py-4 text-white bg-dark-surface border border-white/10 rounded-xl focus:border-primary focus:ring-0 focus:outline-none appearance-none peer" />
+                                    <label for="phone" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-dark-surface px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 cursor-text">Phone</label>
+                                </div>
+                            </div>
+                            
+                            <div class="relative">
+                                <input type="email" id="email" placeholder=" " class="form-input block w-full px-4 py-4 text-white bg-dark-surface border border-white/10 rounded-xl focus:border-primary focus:ring-0 focus:outline-none appearance-none peer" />
+                                <label for="email" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-dark-surface px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 cursor-text">Email Address</label>
+                            </div>
+
+                            <div class="relative">
+                                <input type="text" id="subject" placeholder=" " class="form-input block w-full px-4 py-4 text-white bg-dark-surface border border-white/10 rounded-xl focus:border-primary focus:ring-0 focus:outline-none appearance-none peer" />
+                                <label for="subject" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-dark-surface px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 cursor-text">Subject</label>
+                            </div>
+
+                            <div class="relative">
+                                <textarea id="message" rows="4" placeholder=" " class="form-input block w-full px-4 py-4 text-white bg-dark-surface border border-white/10 rounded-xl focus:border-primary focus:ring-0 focus:outline-none appearance-none peer"></textarea>
+                                <label for="message" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-dark-surface px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-6 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 cursor-text">Message</label>
+                            </div>
+
+                            <button type="button" class="w-full py-4 bg-primary text-black font-bold uppercase tracking-widest hover:bg-white transition duration-300 rounded-xl shadow-[0_4px_14px_0_rgba(16,185,129,0.39)] hover:shadow-[0_6px_20px_rgba(16,185,129,0.23)] hover:-translate-y-1">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Google Map Integration (Feature Enhancement) -->
+                <div class="w-full h-[400px] md:h-[500px] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl filter grayscale hover:grayscale-0 transition duration-700" data-aos="fade-up">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.777085135154!2d-1.288258685465904!3d5.132899996274474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfddf5c357731739%3A0xc39f86326e6f2129!2sCape%20Coast%2C%20Ghana!5e0!3m2!1sen!2sgh!4v1620000000000!5m2!1sen!2sgh" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+           </div>
+       </section>
+    </div>
+
+    <!-- ==================== REDESIGNED FOOTER ==================== -->
+    <footer class="bg-dark-surface border-t border-white/5 pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Col 1: Brand & Newsletter -->
+                <div class="space-y-6">
+                    <a href="#" class="flex items-center gap-2 mb-6">
+                        <img src="https://pgblzmoibxrqyhowsvmg.supabase.co/storage/v1/object/public/green_house/logo2.jpeg" alt="GBC Logo" class="h-12 w-12 object-contain">
+                        <span class="font-bold text-xl text-white tracking-widest">GREEN<span class="text-primary">BUILDING</span></span>
+                    </a>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Redefining the African landscape with modern, sustainable architecture. We build dreams that last a lifetime.
+                    </p>
+                    <div class="pt-4">
+                        <h5 class="text-white text-xs font-bold uppercase tracking-widest mb-3">Subscribe to our Newsletter</h5>
+                        <div class="flex">
+                            <input type="email" placeholder="Email Address" class="bg-black border border-white/10 text-white px-4 py-2 text-sm focus:outline-none focus:border-primary flex-grow rounded-l-lg">
+                            <button class="bg-primary text-black px-4 py-2 hover:bg-white transition rounded-r-lg"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6 border-b border-white/10 pb-2 inline-block">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#" onclick="showPage('about'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-angle-right mr-2 text-primary text-xs"></i> About Us</a></li>
+                        <li><a href="#" onclick="showPage('work'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-angle-right mr-2 text-primary text-xs"></i> Portfolio</a></li>
+                        <li><a href="#" onclick="showPage('team'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-angle-right mr-2 text-primary text-xs"></i> Our Team</a></li>
+                        <li><a href="#" onclick="showPage('awards'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-angle-right mr-2 text-primary text-xs"></i> Awards</a></li>
+                        <li><a href="#" onclick="showPage('blog'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-angle-right mr-2 text-primary text-xs"></i> News & Insights</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Services -->
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6 border-b border-white/10 pb-2 inline-block">Services</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#" onclick="showPage('services'); return false;" class="hover:text-primary transition">Architectural Design</a></li>
+                        <li><a href="#" onclick="showPage('services'); return false;" class="hover:text-primary transition">Engineering Services</a></li>
+                        <li><a href="#" onclick="showPage('services'); return false;" class="hover:text-primary transition">Construction Management</a></li>
+                        <li><a href="#" onclick="showPage('services'); return false;" class="hover:text-primary transition">Renovation & Remodelling</a></li>
+                        <li><a href="#" onclick="showPage('services'); return false;" class="hover:text-primary transition">Real Estate Consultation</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact & Social -->
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6 border-b border-white/10 pb-2 inline-block">Get In Touch</h4>
+                    <ul class="space-y-4 text-sm text-gray-500 mb-8">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-primary mt-1"></i>
+                            <span>Ankaful Junction,<br>Central Region, Ghana</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-phone-alt text-primary mt-1"></i>
+                            <div class="flex flex-col">
+                                <a href="tel:0302933862" class="hover:text-white transition">030 293 3862</a>
+                                <a href="tel:0240908531" class="hover:text-white transition">024 090 8531</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-envelope text-primary mt-1"></i>
+                            <a href="mailto:info@greenbuildingcreation.com" class="hover:text-white transition">info@greenbuildingcreation.com</a>
+                        </li>
+                    </ul>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition rounded-full"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition rounded-full"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition rounded-full"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition rounded-full"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
+                <p>&copy; 2024 Green Building Creation. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 100 });
+
+        // Enhanced Sticky Navbar Logic
+        let lastScrollY = window.scrollY;
+        const navbar = document.getElementById('navbar');
+        const navContainer = document.getElementById('nav-container');
+        let isHomePage = true;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            // Smart Hide Logic
+            if (!isHomePage) {
+                if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                    navbar.classList.add('nav-hidden');
+                } else {
+                    navbar.classList.remove('nav-hidden');
+                }
+            } else {
+                navbar.classList.remove('nav-hidden');
+            }
+
+            // Enhanced Visual Styling (Glassmorphism)
+            if (currentScrollY > 10) {
+                navbar.classList.remove('bg-transparent', 'border-transparent');
+                navbar.classList.add('bg-black/80', 'backdrop-blur-md', 'shadow-2xl', 'border-b', 'border-white/5');
+                navContainer.classList.remove('h-24');
+                navContainer.classList.add('h-20');
+            } else {
+                navbar.classList.add('bg-transparent', 'border-transparent');
+                navbar.classList.remove('bg-black/80', 'backdrop-blur-md', 'shadow-2xl', 'border-b', 'border-white/5');
+                navContainer.classList.remove('h-20');
+                navContainer.classList.add('h-24');
+            }
+            lastScrollY = currentScrollY;
+        });
+
+        // Hero Slider Logic - Sliding Effect
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            slides[currentSlide].classList.add('exit');
+            
+            let next = (currentSlide + 1) % slides.length;
+            
+            slides[next].classList.remove('exit');
+            slides[next].classList.add('active');
+            
+            currentSlide = next;
+        }
+
+        setInterval(nextSlide, 5000); 
+        slides[0].classList.add('active');
+
+
+        function showPage(pageId) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            const activeLink = document.getElementById('nav-' + pageId);
+            if(activeLink) activeLink.classList.add('active');
+            
+            // Update Page State
+            isHomePage = (pageId === 'home');
+            
+            // Reset Navbar to visible when changing pages
+            navbar.classList.remove('nav-hidden');
+            
+            // Force re-check of scroll state for navbar style
+            window.dispatchEvent(new Event('scroll'));
+
+            // Close mobile menu
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        // Initialize Nav State
+        showPage('home'); 
+
+        function mobileMenuToggle() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+        document.getElementById('mobile-menu-btn').addEventListener('click', mobileMenuToggle);
+
+        // --- NEW: About Tab Logic --- //
+        function openAboutTab(tabName) {
+            // Hide all contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            // Remove active style from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Show specific content and activate button
+            document.getElementById('tab-' + tabName).classList.add('active');
+            document.getElementById('btn-' + tabName).classList.add('active');
+        }
+
+        // --- NEW: Accordion Logic --- //
+        function toggleValue(element) {
+            // Close other accordions
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('active');
+                }
+            });
+            // Toggle clicked accordion
+            element.classList.toggle('active');
+        }
+
+        // --- View Logic --- //
+        
+        function viewMission() {
+            // Deprecated by new Tab Logic, kept for safety or if linked elsewhere
+            alert("Our Mission: To be client-centric in the delivery of professional services through innovations in green solutions. We aim to reduce environmental impact while maximizing aesthetic value and functionality for every client.");
+        }
+        function viewVision() {
+             // Deprecated by new Tab Logic
+            alert("Our Vision: To become the leading architecture firm in Sub-Saharan Africa, setting the standard for sustainable development, ethical construction, and modern design excellence.");
+        }
+
+        const serviceData = {
+            'arch': { 
+                title: 'Architectural Design', 
+                icon: 'fas fa-pencil-ruler',
+                // New Image Added
+                image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                content: '<p>Our architectural design process is a blend of art and science. We start by understanding your lifestyle or business needs, then proceed to sketch concepts that maximize natural light, ventilation, and spatial flow.</p><h4 class="text-white font-bold mt-6 mb-2">Key Features:</h4><ul class="list-disc pl-5"><li>3D Visualization & Walkthroughs</li><li>Sustainable Material Selection</li><li>Regulatory Compliance Checks</li></ul>' 
+            },
+            'eng': { 
+                title: 'Engineering Services', 
+                icon: 'fas fa-cogs',
+                // New Image Added
+                image: 'https://images.unsplash.com/photo-1581094794329-cd0f1df9389b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                content: '<p>Structural integrity is non-negotiable. Our engineers use advanced software to simulate loads and stresses, ensuring your building stands strong against time and elements.</p><h4 class="text-white font-bold mt-6 mb-2">Our Focus:</h4><ul class="list-disc pl-5"><li>Structural Analysis</li><li>MEP (Mechanical, Electrical, Plumbing) Design</li><li>Safety Assessments</li></ul>' 
+            },
+            'remodel': { 
+                title: 'Building Remodelling', 
+                icon: 'fas fa-hammer', 
+                // New Image Added
+                image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                content: '<p>Transform outdated spaces into modern marvels. We assess existing structures to enhance functionality and aesthetics without compromising integrity.</p>' 
+            },
+            'pm': { 
+                title: 'Project Management', 
+                icon: 'fas fa-tasks', 
+                // New Image Added
+                image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                content: '<p>We handle the logistics so you don\'t have to. From budget tracking to timeline management, our PMs ensure smooth delivery.</p>' 
+            },
+            'reno': { 
+                title: 'Building Renovations', 
+                icon: 'fas fa-sync-alt', 
+                // New Image Added
+                image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                content: '<p>Restoring glory to existing structures with modern upgrades while preserving historical character.</p>' 
+            },
+            'survey': { 
+                title: 'Surveying', 
+                icon: 'fas fa-map-marked-alt', 
+                // New Image Added
+                image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                content: '<p>Precision mapping for perfect foundations. We use the latest topographic equipment for accurate site analysis.</p>' 
+            },
+            'realestate': { title: 'Real Estate Consultation', icon: 'fas fa-home', content: '<p>Expert market advice for developers and investors. We analyze trends to maximize your ROI.</p>' },
+            'build': {
+                title: 'Construction & Renovation',
+                icon: 'fas fa-hard-hat',
+                // New Image Added
+                image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                content: '<p>Our core expertise lies in bringing architectural visions to life. From breaking ground to the final coat of paint, our construction team ensures precision, speed, and quality. We handle both new builds and complex renovations with equal dedication.</p><h4 class="text-white font-bold mt-6 mb-2">What We Deliver:</h4><ul class="list-disc pl-5"><li>Turnkey Construction Projects</li><li>Complete Home Renovations</li><li>Commercial Build-outs</li><li>Site Supervision & Safety Management</li></ul>'
+            }
+        };
+
+        function viewService(id) {
+            const s = serviceData[id];
+            if(!s) return;
+            document.getElementById('serv-title').textContent = s.title;
+            document.getElementById('serv-icon').className = s.icon;
+            document.getElementById('serv-content').innerHTML = s.content;
+            
+            // New Image Logic
+            const imgEl = document.getElementById('serv-img');
+            if(s.image) {
+                imgEl.src = s.image;
+                imgEl.parentElement.style.display = 'block';
+            } else {
+                imgEl.parentElement.style.display = 'none';
+            }
+            
+            showPage('service-detail-view');
+        }
+
+        // --- NEW: Advantage Logic --- //
+        const advantageData = {
+            'eco': {
+                title: 'Eco-Centric Approach',
+                icon: 'fas fa-leaf',
+                image: 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                content: `
+                    <p>At Green Building Creation, sustainability is not an afterthought; it is the core of our design philosophy. We believe that true luxury lies in harmony with nature.</p>
+                    <h4 class="text-white font-bold mt-6 mb-2">Our Eco-Strategies:</h4>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Passive Solar Design:</strong> Orienting buildings to maximize natural light and minimize heat gain, reducing the need for artificial cooling.</li>
+                        <li><strong>Sustainable Materials:</strong> Prioritizing locally sourced bamboo, rammed earth, and recycled steel to lower the carbon footprint.</li>
+                        <li><strong>Water Conservation:</strong> integrating rainwater harvesting systems and greywater recycling into our residential designs.</li>
+                    </ul>
+                    <p class="mt-4">By choosing our eco-centric approach, you are investing in a future-proof property that saves on utility costs and protects the environment.</p>
+                `
+            },
+            'tailored': {
+                title: 'Tailored Excellence',
+                icon: 'fas fa-drafting-compass',
+                image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                content: `
+                    <p>We understand that no two clients are the same. Your home or office should be a reflection of your unique personality, lifestyle, and aspirations. Our "Tailored Excellence" promise means we listen before we draw.</p>
+                    <h4 class="text-white font-bold mt-6 mb-2">The Process:</h4>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>In-Depth Consultation:</strong> We spend time understanding your daily routines and aesthetic preferences.</li>
+                        <li><strong>Bespoke Design:</strong> Every line drawn is specific to your project; we do not use cookie-cutter templates.</li>
+                        <li><strong>Adaptive Layouts:</strong> Creating spaces that can evolve with your family or business needs over time.</li>
+                    </ul>
+                `
+            },
+            'quality': {
+                title: 'Uncompromised Quality',
+                icon: 'fas fa-hard-hat',
+                image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                content: `
+                    <p>Quality is the bedrock of our reputation. In an industry where cutting corners is common, we stand firm on our standards. From the structural concrete to the final light fixture, everything is vetted for durability and finish.</p>
+                    <h4 class="text-white font-bold mt-6 mb-2">Our Quality Assurance:</h4>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Material Vetting:</strong> We only work with certified suppliers who meet international standards.</li>
+                        <li><strong>Skilled Craftsmanship:</strong> Our artisans are trained to pay attention to the smallest details, ensuring seamless finishes.</li>
+                        <li><strong>Rigorous Inspections:</strong> Our project managers conduct daily site inspections to ensure strict adherence to engineering protocols.</li>
+                    </ul>
+                `
+            }
+        };
+
+        function viewAdvantage(id) {
+            const a = advantageData[id];
+            if(!a) return;
+            document.getElementById('adv-title').textContent = a.title;
+            document.getElementById('adv-icon').className = a.icon;
+            document.getElementById('adv-content').innerHTML = a.content;
+            document.getElementById('adv-img').src = a.image;
+            showPage('advantage-detail-view');
+        }
+
+        const projectData = {
+            1: { 
+                title: "La Villa De Bamako", 
+                category: "Residential", 
+                client: "Private Client", 
+                location: "East Legon, Accra", 
+                year: "2023", 
+                size: "450 sqm", 
+                image: "https://images.unsplash.com/photo-1600596542815-e32c630bd138?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+                description: "<p>This building project features a modern 2-storey home with a basement, utilizing large glass windows for plenty of natural lighting. The upper floor is cantilevered, extending over the pool area to create a dramatic shaded patio. We used locally sourced stone for the facade to ground the modern design in its Ghanaian context.</p>", 
+                gallery: ["https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"]
+            },
+            2: { 
+                title: "The Arch", 
+                category: "Mixed-Use", 
+                client: "Corporate Developer", 
+                location: "Airport City", 
+                year: "2022", 
+                size: "1,200 sqm", 
+                image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+                description: "<p>The Arch is a modern multi-storey building that showcases a bold contemporary design. It is a mixed-use development that combines commercial retail spaces on the ground floor, office spaces on the mid-levels, and luxury residential penthouses. The curved steel structure is a feat of engineering excellence.</p>", 
+                gallery: ["https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"]
+            },
+            3: { 
+                title: "The Opulent", 
+                category: "Residential", 
+                client: "Real Estate Consortium", 
+                location: "Cantonments", 
+                year: "2024", 
+                size: "2,500 sqm", 
+                image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+                description: "<p>This project is an 8-storey residential development located just 3 minutes away from Kotoka International Airport. It features a plethora of amenities including a rooftop infinity pool, a fully equipped gym, and underground parking. The facade utilizes smart-glass technology to reduce solar heat gain.</p>", 
+                gallery: ["https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"]
+            },
+            4: { 
+                title: "GHIPSS Head Office", 
+                category: "Office Complex", 
+                client: "GHIPSS", 
+                location: "Ridge, Accra", 
+                year: "2023", 
+                size: "3,000 sqm", 
+                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+                description: "<p>The GHIPSS building depicts a modern, high-rise office building tailored for the financial sector. It features a sleek, contemporary design with a curved facade and a predominantly glass exterior to symbolize transparency. The interior includes high-security data centers and open-plan collaborative workspaces.</p>", 
+                gallery: ["https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"]
+            },
+            5: { 
+                title: "The Canary", 
+                category: "Apartments", 
+                client: "Private Developer", 
+                location: "Aburi", 
+                year: "2021", 
+                size: "800 sqm", 
+                image: "https://images.unsplash.com/photo-1542841791-1925b02a2bbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+                description: "<p>The Canary building is a six-storey complex with a mix of residences ranging from duplexes to 3-bedroom apartments. Situated in the cool hills of Aburi, the design emphasizes balconies and large sliding doors to maximize natural ventilation and views of the valley.</p>", 
+                gallery: ["https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"]
+            },
+            6: { 
+                title: "Akropong Villa", 
+                category: "Residential", 
+                client: "Private Family", 
+                location: "Akropong", 
+                year: "2024", 
+                size: "200 sqm", 
+                image: "https://images.unsplash.com/photo-1628624747186-a941c476b7ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+                description: "<p>The Akropong Villa showcases modern architectural design characterized by clean lines, geometric shapes, and a minimalist aesthetic. It serves as a retirement home, prioritizing single-level living and accessibility while maintaining a luxurious feel.</p>", 
+                gallery: ["https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"]
+            }
+        };
+
+        function viewProject(id) {
+            const p = projectData[id];
+            if(!p) return;
+            document.getElementById('proj-title').textContent = p.title;
+            document.getElementById('proj-category').textContent = p.category;
+            document.getElementById('proj-main-img').src = p.image;
+            document.getElementById('proj-client').textContent = p.client;
+            document.getElementById('proj-location').textContent = p.location;
+            document.getElementById('proj-year').textContent = p.year;
+            document.getElementById('proj-size').textContent = p.size;
+            document.getElementById('proj-description').innerHTML = p.description;
+            
+            const g = document.getElementById('proj-gallery');
+            g.innerHTML = '';
+            p.gallery.forEach(img => {
+                g.innerHTML += `<img src="${img}" class="w-full h-48 object-cover rounded-2xl border border-white/10 hover:border-primary transition">`;
+            });
+            showPage('project-detail-view');
+        }
+
+        const teamData = {
+            'kwame': { name: 'Kwame Asante', role: 'Principal Architect', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', bio: 'Kwame is the visionary founder of Green Building Creation. With over 15 years in the industry, he specializes in sustainable urban planning and high-end residential design.', expertise: ['Sustainable Design', 'Urban Planning', 'Project Leadership'], socials: { linkedin: '#', twitter: '#', email: 'kwame@greenbuildingcreation.com'} },
+            'kojo': { name: 'Kojo Boateng', role: 'Operations Lead', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', bio: 'Kojo ensures that every project runs like a well-oiled machine. His background in logistics guarantees materials arrive on time and safety protocols are strictly followed.', expertise: ['Logistics', 'Site Safety', 'Resource Management'], socials: { linkedin: '#', twitter: '#'} },
+            'ama': { name: 'Ama Foriwaah', role: 'Project Lead', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', bio: 'Ama bridges the gap between client dreams and construction reality. She manages timelines and client communications with unmatched precision.', expertise: ['Client Relations', 'Quality Assurance', 'Timeline Management'], socials: { linkedin: '#'} }
+        };
+
+        function viewTeamMember(id) {
+            const m = teamData[id];
+            if(!m) return;
+            document.getElementById('profile-name').textContent = m.name;
+            document.getElementById('profile-role').textContent = m.role;
+            document.getElementById('profile-img').src = m.image;
+            document.getElementById('profile-bio').textContent = m.bio;
+            
+            const el = document.getElementById('profile-expertise');
+            el.innerHTML = '';
+            m.expertise.forEach(e => el.innerHTML += `<li class="flex items-center"><i class="fas fa-check text-primary mr-2 text-xs"></i>${e}</li>`);
+
+            const soc = document.getElementById('profile-socials');
+            soc.innerHTML = '';
+            if(m.socials.linkedin) soc.innerHTML += `<a href="${m.socials.linkedin}" class="w-10 h-10 border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary hover:text-black transition rounded-full"><i class="fab fa-linkedin-in"></i></a>`;
+            if(m.socials.twitter) soc.innerHTML += `<a href="${m.socials.twitter}" class="w-10 h-10 border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary hover:text-black transition rounded-full"><i class="fab fa-twitter"></i></a>`;
+            if(m.socials.email) soc.innerHTML += `<a href="mailto:${m.socials.email}" class="w-10 h-10 border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary hover:text-black transition rounded-full"><i class="fas fa-envelope"></i></a>`;
+
+            showPage('member-profile');
+        }
+
+        const blogData = {
+            1: { 
+                title: "The Future of Sustainable Design in Accra", 
+                date: "Oct 15, 2023",
+                author: "Kwame Asante", 
+                category: "Sustainability", 
+                img: "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+                content: `
+                    <p>As Accra continues its rapid urbanization, the need for sustainable design has never been more critical. Traditional construction methods, while effective, often lead to significant energy consumption and environmental degradation. At Green Building Creation, we are championing a shift towards eco-conscious architecture that harmonizes with our local climate.</p>
+                    <h3 class="text-2xl font-bold text-white mt-8 mb-4">Passive Cooling Techniques</h3>
+                    <p>One of the key strategies we employ is passive cooling. By orienting buildings to maximize natural airflow and minimize solar heat gain, we can drastically reduce the need for air conditioning. This not only lowers energy bills but also creates a more comfortable and healthy living environment.</p>
+                    <h3 class="text-2xl font-bold text-white mt-8 mb-4">Green Roofs and Walls</h3>
+                    <p>Integrating vegetation into building structures is another innovative approach. Green roofs and living walls act as natural insulators, absorbing heat and reducing urban heat islands. They also improve air quality and provide habitats for local wildlife.</p>
+                    <p>The future of design in Accra is green, and we are proud to be at the forefront of this transformation.</p>
+                ` 
+            },
+            2: { 
+                title: "Bamboo & Earth: Modernizing Local Materials", 
+                date: "Nov 2, 2023", 
+                author: "Ama Foriwaah",
+                category: "Materials", 
+                img: "https://images.unsplash.com/photo-1593153967854-5c1bc0b9ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+                content: `
+                    <p>For decades, materials like concrete and steel have dominated the Ghanaian construction landscape. However, there is a quiet revolution happening—a return to our roots. Bamboo and earth (laterite) are being reimagined for modern luxury applications.</p>
+                    <h3 class="text-2xl font-bold text-white mt-8 mb-4">The Strength of Bamboo</h3>
+                    <p>Often called "vegetable steel," bamboo has a higher tensile strength than many steel alloys. When treated and used correctly, it offers a sustainable, lightweight, and incredibly durable alternative for roofing structures and decorative facades.</p>
+                    <h3 class="text-2xl font-bold text-white mt-8 mb-4">Rammed Earth Elegance</h3>
+                    <p>Rammed earth walls provide excellent thermal mass, keeping interiors cool during the day and warm at night. Aesthetically, they offer a rich, textured finish that connects the building to the landscape. We are currently utilizing these materials in our upcoming "Akropong Villa" project to stunning effect.</p>
+                ` 
+            },
+            3: { 
+                title: "Smart Homes: Energy Efficiency 101", 
+                date: "Dec 10, 2023",
+                author: "Kojo Boateng", 
+                category: "Technology", 
+                img: "https://images.unsplash.com/photo-1558002038-1091773817a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+                content: `
+                    <p>The concept of a "smart home" often conjures images of voice-activated lights and high-tech security systems. While these are convenient, the true power of smart home technology lies in energy management.</p>
+                    <h3 class="text-2xl font-bold text-white mt-8 mb-4">Automated Climate Control</h3>
+                    <p>Smart thermostats learn your schedule and preferences, automatically adjusting the temperature to ensure comfort when you're home and efficiency when you're not. This simple change can reduce cooling costs by up to 30%.</p>
+                    <h3 class="text-2xl font-bold text-white mt-8 mb-4">Intelligent Lighting</h3>
+                    <p>Sensors that turn lights off when a room is empty, combined with automated shading systems that block out peak afternoon sun, work together to minimize electricity usage. At Green Building Creation, we integrate these systems seamlessly into our designs, proving that luxury and sustainability go hand in hand.</p>
+                ` 
+            }
+        };
+        function viewBlogPost(id) {
+            const b = blogData[id];
+            if(!b) return;
+            document.getElementById('post-title').textContent = b.title;
+            document.getElementById('post-category').textContent = b.category;
+            document.getElementById('post-date').textContent = b.date;
+            document.getElementById('post-author').textContent = b.author;
+            document.getElementById('post-img').src = b.img;
+            document.getElementById('post-content').innerHTML = b.content;
+            showPage('blog-post-view');
+        }
+
+        // --- NEW: Award Logic --- //
+        const awardData = {
+            1: { 
+                year: '2023', 
+                title: 'Best Sustainable Design', 
+                org: 'Ghana Architecture Awards', 
+                desc: '<p>Awarded for our commitment to eco-friendly construction practices in the La Villa De Bamako project. This recognition highlights our innovative use of passive cooling systems, locally sourced materials, and energy-efficient lighting designs that reduce the carbon footprint of luxury residential builds.</p>',
+                image: 'https://images.unsplash.com/photo-1628624747186-a941c476b7ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            },
+            2: { 
+                year: '2021', 
+                title: 'Residential Project of the Year', 
+                org: 'Central Region Builders', 
+                desc: '<p>Recognizing the outstanding architectural merit and construction quality of "The Canary" apartments in Aburi. The jury praised the seamless integration of the building into the hillside topography and the exceptional attention to detail in the finishing works.</p>',
+                image: 'https://images.unsplash.com/photo-1600596542815-e32c630bd138?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            },
+            3: { 
+                year: '2019', 
+                title: 'Safety Excellence', 
+                org: 'Construction Guild', 
+                desc: '<p>Presented in recognition of our zero-accident record across all commercial sites for the 2018-2019 fiscal year. This award underscores our rigorous safety protocols, regular staff training, and commitment to creating a secure working environment for all our site operatives.</p>',
+                image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            }
+        };
+
+        function viewAward(id) {
+            const a = awardData[id];
+            if(!a) return;
+            document.getElementById('aw-title').textContent = a.title;
+            document.getElementById('aw-year').textContent = a.year;
+            document.getElementById('aw-org').textContent = a.org;
+            document.getElementById('aw-desc').innerHTML = a.desc;
+            document.getElementById('aw-img').src = a.image;
+            showPage('award-detail-view');
+        }
+    </script>
+</body>
+</html>
