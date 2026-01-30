@@ -26,8 +26,8 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#10b981', // Vibrant Emerald Green
-                        'primary-dark': '#047857',
+                        primary: '#16a34a', // Updated to True Green/Forest Green to match logo
+                        'primary-dark': '#15803d', // Darker green for hover states
                         secondary: '#D4A373', // Gold/Earth accent
                         black: '#050505',
                         'dark-surface': '#121212',
@@ -74,7 +74,7 @@
             background: #121212; 
         }
         ::-webkit-scrollbar-thumb {
-            background: #10b981; 
+            background: #16a34a; /* Updated Green */
             border-radius: 4px;
         }
 
@@ -132,7 +132,7 @@
             height: 2px;
             bottom: 0;
             right: 0;
-            background-color: #10b981;
+            background-color: #16a34a; /* Updated Green */
             transition: width 0.3s ease-in-out;
         }
         .nav-link:hover::before, .nav-link.active::before {
@@ -148,8 +148,9 @@
         }
         .clickable-card:hover {
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 35px -10px rgba(16, 185, 129, 0.2);
-            border-color: #10b981;
+            /* Updated Green Shadow RGB: 22, 163, 74 */
+            box-shadow: 0 15px 35px -10px rgba(22, 163, 74, 0.2); 
+            border-color: #16a34a;
         }
         
         /* Interactive Box Styles */
@@ -159,7 +160,7 @@
         }
         .interactive-box:hover {
             transform: scale(1.02);
-            border-color: #10b981;
+            border-color: #16a34a;
             background-color: rgba(30, 30, 30, 0.8);
         }
 
@@ -179,7 +180,7 @@
         .form-input:not(:placeholder-shown) ~ label {
             top: -0.5rem;
             font-size: 0.75rem;
-            color: #10b981;
+            color: #16a34a;
             background-color: #1E1E1E;
             padding: 0 0.5rem;
         }
@@ -193,9 +194,9 @@
             display: block;
         }
         .tab-btn.active {
-            background-color: #10b981;
-            color: #050505;
-            border-color: #10b981;
+            background-color: #16a34a;
+            color: #ffffff; /* Changed to white for better contrast on green */
+            border-color: #16a34a;
         }
         
         /* Accordion Styles */
@@ -212,7 +213,7 @@
         }
         .accordion-item.active .accordion-icon {
             transform: rotate(180deg);
-            color: #10b981;
+            color: #16a34a;
         }
 
         /* New Image Card Styles for Services */
@@ -276,7 +277,7 @@
             <div class="flex justify-between items-center h-24 transition-all duration-300" id="nav-container">
                 <!-- Logo -->
                 <a href="#" onclick="showPage('home'); return false;" class="flex items-center gap-3 group">
-                    <img src="https://pgblzmoibxrqyhowsvmg.supabase.co/storage/v1/object/public/green_house/logo2.jpeg" alt="GBC Logo" class="h-12 w-12 object-contain shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                    <img src="https://pgblzmoibxrqyhowsvmg.supabase.co/storage/v1/object/public/green_house/logo2.jpeg" alt="GBC Logo" class="h-12 w-12 object-contain shadow-[0_0_15px_rgba(22,163,74,0.3)]">
                     <div class="flex flex-col drop-shadow-md">
                         <span class="font-sans font-bold text-xl text-white tracking-widest leading-none">GREEN<span class="text-primary">BUILDING</span></span>
                         <span class="text-[10px] text-gray-300 tracking-[0.3em] uppercase group-hover:text-white transition">Creation</span>
@@ -292,7 +293,7 @@
                     <a href="#" onclick="showPage('team'); return false;" id="nav-team" class="nav-link text-white hover:text-primary transition drop-shadow-md py-2">Team</a>
                     <a href="#" onclick="showPage('awards'); return false;" id="nav-awards" class="nav-link text-white hover:text-primary transition drop-shadow-md py-2">Awards</a>
                     <a href="#" onclick="showPage('blog'); return false;" id="nav-blog" class="nav-link text-white hover:text-primary transition drop-shadow-md py-2">News</a>
-                    <a href="#" onclick="showPage('contact'); return false;" id="nav-contact" class="ml-4 px-7 py-3 border border-primary text-primary hover:bg-primary hover:text-black hover:border-transparent transition duration-300 rounded-full font-bold shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] transform hover:-translate-y-1">Contact</a>
+                    <a href="#" onclick="showPage('contact'); return false;" id="nav-contact" class="ml-4 px-7 py-3 border border-primary text-primary hover:bg-primary hover:text-white hover:border-transparent transition duration-300 rounded-full font-bold shadow-[0_0_15px_rgba(22,163,74,0.3)] hover:shadow-[0_0_25px_rgba(22,163,74,0.5)] transform hover:-translate-y-1">Contact</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -312,7 +313,7 @@
                 <a href="#" onclick="showPage('team'); mobileMenuToggle(); return false;" class="text-white hover:text-primary transition">Our Team</a>
                 <a href="#" onclick="showPage('awards'); mobileMenuToggle(); return false;" class="text-white hover:text-primary transition">Awards</a>
                 <a href="#" onclick="showPage('blog'); mobileMenuToggle(); return false;" class="text-white hover:text-primary transition">News</a>
-                <a href="#" onclick="showPage('contact'); mobileMenuToggle(); return false;" class="text-primary border border-primary py-3 rounded-2xl hover:bg-primary hover:text-black transition">Contact Us</a>
+                <a href="#" onclick="showPage('contact'); mobileMenuToggle(); return false;" class="text-primary border border-primary py-3 rounded-2xl hover:bg-primary hover:text-white transition">Contact Us</a>
             </div>
         </div>
     </nav>
@@ -339,7 +340,7 @@
                     Transforming the Ghanaian skyline with sustainable innovation and premium craftsmanship.
                 </p>
                 <div class="flex flex-col md:flex-row gap-6 justify-center animate-fade-in-down" style="animation-delay: 0.8s">
-                    <button onclick="showPage('work')" class="px-10 py-4 bg-primary text-black font-bold uppercase tracking-widest text-sm hover:bg-white transition duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] rounded-full">
+                    <button onclick="showPage('work')" class="px-10 py-4 bg-primary text-white font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-black transition duration-300 shadow-[0_0_20px_rgba(22,163,74,0.3)] rounded-full">
                         Our Works
                     </button>
                     <button onclick="showPage('contact')" class="px-10 py-4 bg-transparent border border-white text-white font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-black transition duration-300 rounded-full">
@@ -595,7 +596,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div class="clickable-card image-card-bg p-8 border border-white/5 rounded-3xl flex flex-col justify-end min-h-[350px]" onclick="viewAdvantage('eco')">
                             <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Eco">
-                            <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                            <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-white transition duration-300 rounded-full relative z-10">
                                 <i class="fas fa-leaf"></i>
                             </div>
                             <h4 class="text-xl font-bold text-white mb-3 relative z-10">Eco-Centric Approach</h4>
@@ -605,7 +606,7 @@
                         
                         <div class="clickable-card image-card-bg p-8 border border-white/5 rounded-3xl flex flex-col justify-end min-h-[350px]" onclick="viewAdvantage('tailored')">
                             <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Tailored">
-                            <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                            <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-white transition duration-300 rounded-full relative z-10">
                                 <i class="fas fa-drafting-compass"></i>
                             </div>
                             <h4 class="text-xl font-bold text-white mb-3 relative z-10">Tailored Excellence</h4>
@@ -615,7 +616,7 @@
                         
                         <div class="clickable-card image-card-bg p-8 border border-white/5 rounded-3xl flex flex-col justify-end min-h-[350px]" onclick="viewAdvantage('quality')">
                             <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Quality">
-                            <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                            <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-white transition duration-300 rounded-full relative z-10">
                                 <i class="fas fa-hard-hat"></i>
                             </div>
                             <h4 class="text-xl font-bold text-white mb-3 relative z-10">Uncompromised Quality</h4>
@@ -699,7 +700,7 @@
                    <!-- Service 1: Enhanced with Image BG -->
                    <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('arch')">
                        <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Arch">
-                       <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                       <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-white transition duration-300 rounded-full relative z-10">
                            <i class="fas fa-pencil-ruler"></i>
                        </div>
                        <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider relative z-10">Architectural Design</h3>
@@ -710,7 +711,7 @@
                    <!-- Service 2: Enhanced with Image BG -->
                    <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('eng')">
                         <img src="https://images.unsplash.com/photo-1581094794329-cd0f1df9389b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Eng">
-                        <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                        <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-white transition duration-300 rounded-full relative z-10">
                             <i class="fas fa-cogs"></i>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider relative z-10">Engineering Services</h3>
@@ -721,7 +722,7 @@
                     <!-- Service 3: Enhanced with Image BG -->
                     <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('remodel')">
                         <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Remodel">
-                        <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                        <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-white transition duration-300 rounded-full relative z-10">
                             <i class="fas fa-hammer"></i>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider relative z-10">Building Remodelling</h3>
@@ -732,7 +733,7 @@
                     <!-- Service 4: Enhanced with Image BG -->
                     <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('pm')">
                         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="PM">
-                        <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                        <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-white transition duration-300 rounded-full relative z-10">
                             <i class="fas fa-tasks"></i>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider relative z-10">Project Management</h3>
@@ -743,7 +744,7 @@
                     <!-- Service 5: Enhanced with Image BG -->
                     <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('reno')">
                         <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Reno">
-                        <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                        <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-white transition duration-300 rounded-full relative z-10">
                             <i class="fas fa-sync-alt"></i>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider relative z-10">Building Renovations</h3>
@@ -754,7 +755,7 @@
                     <!-- Service 6: Enhanced with Image BG -->
                     <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('survey')">
                         <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Survey">
-                        <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-black transition duration-300 rounded-full relative z-10">
+                        <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-white transition duration-300 rounded-full relative z-10">
                             <i class="fas fa-map-marked-alt"></i>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-wider relative z-10">Surveying</h3>
@@ -965,7 +966,8 @@
                          <img id="aw-img" src="" class="w-full h-full object-cover opacity-50">
                          <div class="absolute inset-0 bg-gradient-to-t from-dark-card to-transparent"></div>
                          <div class="absolute bottom-0 left-0 w-full p-8 text-center">
-                             <span id="aw-year" class="text-primary font-bold text-7xl block mb-2 drop-shadow-[0_0_15px_rgba(16,185,129,0.5)]">Year</span>
+                             <!-- Updated Green Shadow RGB: 22, 163, 74 -->
+                             <span id="aw-year" class="text-primary font-bold text-7xl block mb-2 drop-shadow-[0_0_15px_rgba(22,163,74,0.5)]">Year</span>
                          </div>
                     </div>
 
@@ -1322,7 +1324,7 @@
                         <!-- Info Cards (Pergola Style Features) -->
                         <div class="grid grid-cols-1 gap-6">
                             <div class="flex items-start p-6 bg-dark-card border border-white/5 rounded-3xl hover:border-primary/50 transition duration-300 group hover:-translate-y-1 shadow-lg">
-                                <div class="w-12 h-12 rounded-full bg-dark-surface border border-white/10 flex items-center justify-center text-primary text-xl flex-shrink-0 group-hover:bg-primary group-hover:text-black transition">
+                                <div class="w-12 h-12 rounded-full bg-dark-surface border border-white/10 flex items-center justify-center text-primary text-xl flex-shrink-0 group-hover:bg-primary group-hover:text-white transition">
                                     <i class="fas fa-map-marker-alt"></i>
                                 </div>
                                 <div class="ml-6">
@@ -1332,7 +1334,7 @@
                             </div>
 
                             <div class="flex items-start p-6 bg-dark-card border border-white/5 rounded-3xl hover:border-primary/50 transition duration-300 group hover:-translate-y-1 shadow-lg">
-                                <div class="w-12 h-12 rounded-full bg-dark-surface border border-white/10 flex items-center justify-center text-primary text-xl flex-shrink-0 group-hover:bg-primary group-hover:text-black transition">
+                                <div class="w-12 h-12 rounded-full bg-dark-surface border border-white/10 flex items-center justify-center text-primary text-xl flex-shrink-0 group-hover:bg-primary group-hover:text-white transition">
                                     <i class="fas fa-phone-alt"></i>
                                 </div>
                                 <div class="ml-6">
@@ -1345,7 +1347,7 @@
                             </div>
 
                             <div class="flex items-start p-6 bg-dark-card border border-white/5 rounded-3xl hover:border-primary/50 transition duration-300 group hover:-translate-y-1 shadow-lg">
-                                <div class="w-12 h-12 rounded-full bg-dark-surface border border-white/10 flex items-center justify-center text-primary text-xl flex-shrink-0 group-hover:bg-primary group-hover:text-black transition">
+                                <div class="w-12 h-12 rounded-full bg-dark-surface border border-white/10 flex items-center justify-center text-primary text-xl flex-shrink-0 group-hover:bg-primary group-hover:text-white transition">
                                     <i class="fas fa-envelope"></i>
                                 </div>
                                 <div class="ml-6">
@@ -1359,10 +1361,10 @@
                         <div>
                             <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-4">Follow Us</h4>
                             <div class="flex space-x-4">
-                                <a href="#" class="w-12 h-12 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition rounded-full"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" class="w-12 h-12 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition rounded-full"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="w-12 h-12 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition rounded-full"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#" class="w-12 h-12 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition rounded-full"><i class="fab fa-whatsapp"></i></a>
+                                <a href="#" class="w-12 h-12 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition rounded-full"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="w-12 h-12 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition rounded-full"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="w-12 h-12 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition rounded-full"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="w-12 h-12 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition rounded-full"><i class="fab fa-whatsapp"></i></a>
                             </div>
                         </div>
                     </div>
@@ -1398,8 +1400,9 @@
                                 <textarea id="message" rows="4" placeholder=" " class="form-input block w-full px-4 py-4 text-white bg-dark-surface border border-white/10 rounded-xl focus:border-primary focus:ring-0 focus:outline-none appearance-none peer"></textarea>
                                 <label for="message" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-dark-surface px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-6 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 cursor-text">Message</label>
                             </div>
-
-                            <button type="button" class="w-full py-4 bg-primary text-black font-bold uppercase tracking-widest hover:bg-white transition duration-300 rounded-xl shadow-[0_4px_14px_0_rgba(16,185,129,0.39)] hover:shadow-[0_6px_20px_rgba(16,185,129,0.23)] hover:-translate-y-1">Send Message</button>
+                            
+                            <!-- Updated Green Shadow RGB: 22, 163, 74 -->
+                            <button type="button" class="w-full py-4 bg-primary text-black font-bold uppercase tracking-widest hover:bg-white transition duration-300 rounded-xl shadow-[0_4px_14px_0_rgba(22,163,74,0.39)] hover:shadow-[0_6px_20px_rgba(22,163,74,0.23)] hover:-translate-y-1">Send Message</button>
                         </form>
                     </div>
                 </div>
@@ -1486,10 +1489,10 @@
                         </li>
                     </ul>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition rounded-full"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition rounded-full"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition rounded-full"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-black hover:border-primary transition rounded-full"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition rounded-full"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition rounded-full"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition rounded-full"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition rounded-full"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
