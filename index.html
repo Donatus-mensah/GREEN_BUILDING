@@ -26,8 +26,8 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#16a34a', // Updated to True Green/Forest Green to match logo
-                        'primary-dark': '#15803d', // Darker green for hover states
+                        primary: '#16a34a', // True Green/Forest Green
+                        'primary-dark': '#15803d',
                         secondary: '#D4A373', // Gold/Earth accent
                         black: '#050505',
                         'dark-surface': '#121212',
@@ -74,11 +74,11 @@
             background: #121212; 
         }
         ::-webkit-scrollbar-thumb {
-            background: #16a34a; /* Updated Green */
+            background: #16a34a; 
             border-radius: 4px;
         }
 
-        /* Hero Slider Transitions - Sliding Effect */
+        /* Hero Slider Transitions */
         .hero-slide {
             position: absolute;
             top: 0;
@@ -89,17 +89,17 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            transform: translateX(100%); /* Start from right */
+            transform: translateX(100%);
             z-index: 0;
         }
         .hero-slide.active {
             opacity: 1;
-            transform: translateX(0); /* Center */
+            transform: translateX(0);
             z-index: 2;
         }
         .hero-slide.exit {
             opacity: 0;
-            transform: translateX(-100%); /* Move to left */
+            transform: translateX(-100%);
             z-index: 1;
         }
         
@@ -120,7 +120,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Enhanced Nav Link Effects */
+        /* Nav Link Effects */
         .nav-link {
             position: relative;
             padding-bottom: 2px;
@@ -132,7 +132,7 @@
             height: 2px;
             bottom: 0;
             right: 0;
-            background-color: #16a34a; /* Updated Green */
+            background-color: #16a34a;
             transition: width 0.3s ease-in-out;
         }
         .nav-link:hover::before, .nav-link.active::before {
@@ -140,22 +140,21 @@
             left: 0;
         }
 
-        /* Card Hover Effects & Rounding */
+        /* Card Hover Effects */
         .clickable-card {
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-radius: 1.5rem; /* rounded-3xl */
+            border-radius: 1.5rem; 
         }
         .clickable-card:hover {
             transform: translateY(-5px) scale(1.02);
-            /* Updated Green Shadow RGB: 22, 163, 74 */
             box-shadow: 0 15px 35px -10px rgba(22, 163, 74, 0.2); 
             border-color: #16a34a;
         }
         
         /* Interactive Box Styles */
         .interactive-box {
-            border-radius: 2rem; /* rounded-4xl/full-ish */
+            border-radius: 2rem;
             transition: all 0.3s ease;
         }
         .interactive-box:hover {
@@ -195,28 +194,11 @@
         }
         .tab-btn.active {
             background-color: #16a34a;
-            color: #ffffff; /* Changed to white for better contrast on green */
+            color: #ffffff;
             border-color: #16a34a;
         }
         
-        /* Accordion Styles */
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, opacity 0.4s ease;
-            opacity: 0;
-        }
-        .accordion-item.active .accordion-content {
-            max-height: 200px;
-            opacity: 1;
-            margin-top: 1rem;
-        }
-        .accordion-item.active .accordion-icon {
-            transform: rotate(180deg);
-            color: #16a34a;
-        }
-
-        /* New Image Card Styles for Services */
+        /* Image Card Styles */
         .image-card-bg {
             background-size: cover;
             background-position: center;
@@ -233,7 +215,7 @@
             transition: opacity 0.5s ease;
         }
         .image-card-bg:hover::before {
-            opacity: 0.85; /* Lighten on hover */
+            opacity: 0.85;
             background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.3) 100%);
         }
         .image-card-bg img.bg-target {
@@ -248,6 +230,30 @@
         }
         .image-card-bg:hover img.bg-target {
             transform: scale(1.1);
+        }
+
+        /* Toast Notification */
+        #toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease-out;
+            pointer-events: none;
+        }
+        #toast-container.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast-success {
+            border-left: 4px solid #16a34a;
+            background-color: #1E1E1E;
+        }
+        .toast-error {
+            border-left: 4px solid #ef4444;
+            background-color: #1E1E1E;
         }
     </style>
 </head>
@@ -272,7 +278,7 @@
         </div>
     </div>
 
-    <!-- Navigation (Enhanced) -->
+    <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 md:top-[41px] w-full z-40 transition-all duration-500 bg-transparent border-b border-transparent">
         <div class="container mx-auto px-6">
             <div class="flex justify-between items-center h-24 transition-all duration-300" id="nav-container">
@@ -285,7 +291,7 @@
                     </div>
                 </a>
 
-                <!-- Desktop Menu - ALL Links Visible -->
+                <!-- Desktop Menu -->
                 <div class="hidden xl:flex items-center space-x-8 text-[11px] font-bold uppercase tracking-[0.15em]">
                     <a href="#" onclick="showPage('home'); return false;" id="nav-home" class="nav-link text-white hover:text-primary transition drop-shadow-md py-2">Home</a>
                     <a href="#" onclick="showPage('about'); return false;" id="nav-about" class="nav-link text-white hover:text-primary transition drop-shadow-md py-2">About</a>
@@ -318,6 +324,15 @@
             </div>
         </div>
     </nav>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="rounded-lg shadow-2xl p-4 flex items-center space-x-3 border border-white/10">
+        <div id="toast-icon" class="text-lg"></div>
+        <div>
+            <h4 id="toast-title" class="font-bold text-sm text-white">Title</h4>
+            <p id="toast-message" class="text-xs text-gray-400">Message</p>
+        </div>
+    </div>
 
     <!-- ==================== HOME PAGE ==================== -->
     <div id="home" class="page-content active">
@@ -465,7 +480,7 @@
             </div>
         </section>
 
-        <!-- Services Summary - Enhanced with Images -->
+        <!-- Services Summary -->
         <section class="py-24 bg-dark-surface">
             <div class="container mx-auto px-6">
                  <div class="flex justify-between items-end mb-12">
@@ -503,7 +518,7 @@
         </section>
     </div>
 
-    <!-- ==================== ABOUT PAGE (ENHANCED) ==================== -->
+    <!-- ==================== ABOUT PAGE ==================== -->
     <div id="about" class="page-content">
         <!-- Header -->
         <div class="relative h-[40vh] bg-dark-surface flex items-center justify-center">
@@ -518,7 +533,7 @@
             <div class="container mx-auto px-6">
                 <!-- Who We Are & Interactive Tabs -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20 items-start">
-                    <!-- Left: Who We Are (Detailed) -->
+                    <!-- Left: Who We Are -->
                     <div data-aos="fade-right">
                         <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">Our Story & Legacy</span>
                         <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mb-6">Building More Than Just Structures</h2>
@@ -588,7 +603,7 @@
                     </div>
                 </div>
 
-                <!-- Why Choose Us (New Section) -->
+                <!-- Why Choose Us -->
                 <div class="mb-24" data-aos="fade-up">
                     <div class="text-center mb-12">
                         <span class="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">The Green Advantage</span>
@@ -627,7 +642,7 @@
                     </div>
                 </div>
 
-                <!-- Enhanced Core Values Grid -->
+                <!-- Core Values Grid -->
                 <div data-aos="fade-up">
                     <h3 class="text-2xl font-serif font-bold text-white mb-10 text-center">Our Core Values</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -698,7 +713,7 @@
        <section class="py-24 bg-black">
            <div class="container mx-auto px-6">
                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                   <!-- Service 1: Enhanced with Image BG -->
+                   <!-- Service 1 -->
                    <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('arch')">
                        <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Arch">
                        <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-white transition duration-300 rounded-full relative z-10">
@@ -709,7 +724,7 @@
                        <span class="text-primary text-xs font-bold uppercase tracking-widest flex items-center relative z-10">View Details <i class="fas fa-plus ml-2"></i></span>
                    </div>
                    
-                   <!-- Service 2: Enhanced with Image BG -->
+                   <!-- Service 2 -->
                    <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('eng')">
                         <img src="https://images.unsplash.com/photo-1581094794329-cd0f1df9389b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Eng">
                         <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-white transition duration-300 rounded-full relative z-10">
@@ -720,7 +735,7 @@
                         <span class="text-primary text-xs font-bold uppercase tracking-widest flex items-center relative z-10">View Details <i class="fas fa-plus ml-2"></i></span>
                     </div>
 
-                    <!-- Service 3: Enhanced with Image BG -->
+                    <!-- Service 3 -->
                     <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('remodel')">
                         <img src="https://pgblzmoibxrqyhowsvmg.supabase.co/storage/v1/object/public/green_house/remodelling.jpeg" class="bg-target" alt="Remodel">
                         <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-white transition duration-300 rounded-full relative z-10">
@@ -731,7 +746,7 @@
                         <span class="text-primary text-xs font-bold uppercase tracking-widest flex items-center relative z-10">View Details <i class="fas fa-plus ml-2"></i></span>
                     </div>
 
-                    <!-- Service 4: Enhanced with Image BG -->
+                    <!-- Service 4 -->
                     <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('pm')">
                         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="PM">
                         <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-white transition duration-300 rounded-full relative z-10">
@@ -742,7 +757,7 @@
                         <span class="text-primary text-xs font-bold uppercase tracking-widest flex items-center relative z-10">View Details <i class="fas fa-plus ml-2"></i></span>
                     </div>
 
-                    <!-- Service 5: Enhanced with Image BG -->
+                    <!-- Service 5 -->
                     <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('reno')">
                         <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Reno">
                         <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-white transition duration-300 rounded-full relative z-10">
@@ -753,7 +768,7 @@
                         <span class="text-primary text-xs font-bold uppercase tracking-widest flex items-center relative z-10">View Details <i class="fas fa-plus ml-2"></i></span>
                     </div>
 
-                    <!-- Service 6: Enhanced with Image BG -->
+                    <!-- Service 6 -->
                     <div class="clickable-card image-card-bg p-8 border border-white/5 hover:border-primary transition duration-300 group hover:-translate-y-2 rounded-3xl min-h-[400px] flex flex-col justify-end" onclick="viewService('survey')">
                         <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="bg-target" alt="Survey">
                         <div class="w-14 h-14 bg-dark-surface border border-white/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-white transition duration-300 rounded-full relative z-10">
@@ -768,7 +783,7 @@
        </section>
     </div>
 
-    <!-- ==================== NEW: SERVICE DETAIL VIEW ==================== -->
+    <!-- ==================== SERVICE DETAIL VIEW ==================== -->
     <div id="service-detail-view" class="page-content">
         <div class="bg-black pt-24 pb-24 min-h-screen">
             <div class="container mx-auto px-6 max-w-5xl">
@@ -776,7 +791,7 @@
                     <i class="fas fa-long-arrow-alt-left mr-2 group-hover:-translate-x-2 transition"></i> Back to Services
                 </button>
                 <div class="bg-dark-card p-10 border border-white/10 rounded-[2rem]">
-                    <!-- Added Picture here as requested -->
+                    
                     <div class="h-64 w-full rounded-2xl overflow-hidden mb-8 relative border border-white/10">
                         <img id="serv-img" src="" class="w-full h-full object-cover transform hover:scale-105 transition duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -799,7 +814,7 @@
         </div>
     </div>
 
-    <!-- ==================== NEW: ADVANTAGE DETAIL VIEW ==================== -->
+    <!-- ==================== ADVANTAGE DETAIL VIEW ==================== -->
     <div id="advantage-detail-view" class="page-content">
         <div class="bg-black pt-24 pb-24 min-h-screen">
             <div class="container mx-auto px-6 max-w-5xl">
@@ -875,7 +890,7 @@
        </section>
     </div>
 
-    <!-- ==================== AWARDS PAGE (ENHANCED) ==================== -->
+    <!-- ==================== AWARDS PAGE ==================== -->
     <div id="awards" class="page-content">
         <!-- Header -->
         <div class="relative h-[40vh] bg-dark-surface flex items-center justify-center">
@@ -953,7 +968,7 @@
        </section>
     </div>
 
-    <!-- ==================== AWARD DETAIL VIEW (ENHANCED) ==================== -->
+    <!-- ==================== AWARD DETAIL VIEW ==================== -->
     <div id="award-detail-view" class="page-content">
         <div class="bg-black pt-24 pb-24 min-h-screen">
             <div class="container mx-auto px-6 max-w-4xl text-center">
@@ -967,7 +982,6 @@
                          <img id="aw-img" src="" class="w-full h-full object-cover opacity-50">
                          <div class="absolute inset-0 bg-gradient-to-t from-dark-card to-transparent"></div>
                          <div class="absolute bottom-0 left-0 w-full p-8 text-center">
-                             <!-- Updated Green Shadow RGB: 22, 163, 74 -->
                              <span id="aw-year" class="text-primary font-bold text-7xl block mb-2 drop-shadow-[0_0_15px_rgba(22,163,74,0.5)]">Year</span>
                          </div>
                     </div>
@@ -1176,7 +1190,7 @@
         </div>
     </div>
 
-    <!-- ==================== BLOG PAGE (ENHANCED) ==================== -->
+    <!-- ==================== BLOG PAGE ==================== -->
     <div id="blog" class="page-content">
         <!-- Header -->
         <div class="relative h-[40vh] bg-dark-surface flex items-center justify-center">
@@ -1250,7 +1264,7 @@
         </div>
     </div>
     
-    <!-- ==================== BLOG POST DETAIL VIEW (ENHANCED) ==================== -->
+    <!-- ==================== BLOG POST DETAIL VIEW ==================== -->
     <div id="blog-post-view" class="page-content">
         <div class="bg-black pt-24 pb-24 min-h-screen">
              <div class="container mx-auto px-6 max-w-4xl">
@@ -1297,7 +1311,7 @@
         </div>
     </div>
 
-    <!-- ==================== CONTACT PAGE (ENHANCED) ==================== -->
+    <!-- ==================== CONTACT PAGE ==================== -->
     <div id="contact" class="page-content">
        <div class="relative h-[40vh] bg-dark-surface flex items-center justify-center">
             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1423666639041-f142fcb96313?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20"></div>
@@ -1375,7 +1389,7 @@
                         <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
                         
                         <h3 class="text-2xl font-bold text-white mb-8">Send a Message</h3>
-                        <form class="space-y-6">
+                        <form class="space-y-6" onsubmit="event.preventDefault();">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="relative">
                                     <input type="text" id="name" placeholder=" " class="form-input block w-full px-4 py-4 text-white bg-dark-surface border border-white/10 rounded-xl focus:border-primary focus:ring-0 focus:outline-none appearance-none peer" />
@@ -1402,13 +1416,14 @@
                                 <label for="message" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-dark-surface px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-6 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 cursor-text">Message</label>
                             </div>
                             
-                            <!-- Updated Green Shadow RGB: 22, 163, 74 -->
-                            <button type="button" class="w-full py-4 bg-primary text-black font-bold uppercase tracking-widest hover:bg-white transition duration-300 rounded-xl shadow-[0_4px_14px_0_rgba(22,163,74,0.39)] hover:shadow-[0_6px_20px_rgba(22,163,74,0.23)] hover:-translate-y-1">Send Message</button>
+                            <button type="button" id="submit-contact-btn" class="w-full py-4 bg-primary text-black font-bold uppercase tracking-widest hover:bg-white transition duration-300 rounded-xl shadow-[0_4px_14px_0_rgba(22,163,74,0.39)] hover:shadow-[0_6px_20px_rgba(22,163,74,0.23)] hover:-translate-y-1 flex justify-center items-center gap-2">
+                                <span>Send Message</span>
+                            </button>
                         </form>
                     </div>
                 </div>
 
-                <!-- Google Map Integration (Feature Enhancement) -->
+                <!-- Google Map Integration -->
                 <div class="w-full h-[400px] md:h-[500px] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl filter grayscale hover:grayscale-0 transition duration-700" data-aos="fade-up">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.777085135154!2d-1.288258685465904!3d5.132899996274474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfddf5c357731739%3A0xc39f86326e6f2129!2sCape%20Coast%2C%20Ghana!5e0!3m2!1sen!2sgh!4v1620000000000!5m2!1sen!2sgh" 
@@ -1423,7 +1438,134 @@
        </section>
     </div>
 
-    <!-- ==================== REDESIGNED FOOTER ==================== -->
+    <!-- ==================== NEW: PRIVACY POLICY PAGE ==================== -->
+    <div id="privacy" class="page-content">
+        <div class="relative h-[40vh] bg-dark-surface flex items-center justify-center">
+            <div class="relative z-10 text-center">
+                <h1 class="text-4xl md:text-5xl font-serif font-bold text-white mb-2">Privacy Policy</h1>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+            </div>
+       </div>
+       <div class="bg-black pt-16 pb-24">
+            <div class="container mx-auto px-6 max-w-4xl text-gray-400 leading-relaxed space-y-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">1. Introduction</h3>
+                    <p>At Green Building Creations ("we", "our", or "us"), we value your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website or use our services.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">2. Information We Collect</h3>
+                    <p>We may collect personal information that you voluntarily provide to us when expressing an interest in obtaining information about us or our products and services, when participating in activities on the website, or otherwise contacting us. This includes:</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-2">
+                        <li>Names</li>
+                        <li>Phone numbers</li>
+                        <li>Email addresses</li>
+                        <li>Project details provided in contact forms</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">3. How We Use Your Information</h3>
+                    <p>We use the information we collect or receive:</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-2">
+                        <li>To facilitate account creation and logon process.</li>
+                        <li>To send you marketing and promotional communications.</li>
+                        <li>To respond to user inquiries/offer support to users.</li>
+                        <li>To protect our Services.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">4. Data Security</h3>
+                    <p>We have implemented appropriate technical and organizational security measures designed to protect the security of any personal information we process. However, please also remember that we cannot guarantee that the internet itself is 100% secure.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">5. Contact Us</h3>
+                    <p>If you have questions or comments about this policy, you may email us at <a href="mailto:info@greenbuildingcreation.com" class="text-primary">info@greenbuildingcreation.com</a>.</p>
+                </div>
+            </div>
+       </div>
+    </div>
+
+    <!-- ==================== NEW: TERMS OF SERVICE PAGE ==================== -->
+    <div id="terms" class="page-content">
+        <div class="relative h-[40vh] bg-dark-surface flex items-center justify-center">
+            <div class="relative z-10 text-center">
+                <h1 class="text-4xl md:text-5xl font-serif font-bold text-white mb-2">Terms of Service</h1>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+            </div>
+       </div>
+       <div class="bg-black pt-16 pb-24">
+            <div class="container mx-auto px-6 max-w-4xl text-gray-400 leading-relaxed space-y-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">1. Agreement to Terms</h3>
+                    <p>These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you") and Green Building Creations, concerning your access to and use of our website. By accessing the site, you agree that you have read, understood, and agreed to be bound by all of these Terms of Service.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">2. Intellectual Property Rights</h3>
+                    <p>Unless otherwise indicated, the Site is our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the "Content") and the trademarks, service marks, and logos contained therein (the "Marks") are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">3. User Representations</h3>
+                    <p>By using the Site, you represent and warrant that: (1) all registration information you submit will be true, accurate, current, and complete; (2) you will maintain the accuracy of such information and promptly update such registration information as necessary; (3) you have the legal capacity and you agree to comply with these Terms of Service.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">4. Limitations of Liability</h3>
+                    <p>In no event will we or our directors, employees, or agents be liable to you or any third party for any direct, indirect, consequential, exemplary, incidental, special, or punitive damages, including lost profit, lost revenue, loss of data, or other damages arising from your use of the site, even if we have been advised of the possibility of such damages.</p>
+                </div>
+            </div>
+       </div>
+    </div>
+
+    <!-- ==================== NEW: SITEMAP PAGE ==================== -->
+    <div id="sitemap" class="page-content">
+        <div class="relative h-[40vh] bg-dark-surface flex items-center justify-center">
+            <div class="relative z-10 text-center">
+                <h1 class="text-4xl md:text-5xl font-serif font-bold text-white mb-2">Sitemap</h1>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+            </div>
+       </div>
+       <div class="bg-black pt-16 pb-24">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Main Pages -->
+                    <div class="bg-dark-card p-8 rounded-3xl border border-white/5">
+                        <h3 class="text-white font-bold text-xl mb-6 border-b border-white/10 pb-2">Main Navigation</h3>
+                        <ul class="space-y-3 text-gray-400">
+                            <li><a href="#" onclick="showPage('home'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Home</a></li>
+                            <li><a href="#" onclick="showPage('about'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> About Us</a></li>
+                            <li><a href="#" onclick="showPage('services'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Services</a></li>
+                            <li><a href="#" onclick="showPage('work'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Our Works</a></li>
+                            <li><a href="#" onclick="showPage('team'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Our Team</a></li>
+                            <li><a href="#" onclick="showPage('awards'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Awards</a></li>
+                            <li><a href="#" onclick="showPage('blog'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> News</a></li>
+                            <li><a href="#" onclick="showPage('contact'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Legal -->
+                    <div class="bg-dark-card p-8 rounded-3xl border border-white/5">
+                        <h3 class="text-white font-bold text-xl mb-6 border-b border-white/10 pb-2">Legal</h3>
+                        <ul class="space-y-3 text-gray-400">
+                            <li><a href="#" onclick="showPage('privacy'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Privacy Policy</a></li>
+                            <li><a href="#" onclick="showPage('terms'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Terms of Service</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Services Breakdown -->
+                    <div class="bg-dark-card p-8 rounded-3xl border border-white/5">
+                        <h3 class="text-white font-bold text-xl mb-6 border-b border-white/10 pb-2">Services</h3>
+                        <ul class="space-y-3 text-gray-400">
+                            <li><a href="#" onclick="viewService('arch'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Architectural Design</a></li>
+                            <li><a href="#" onclick="viewService('eng'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Engineering Services</a></li>
+                            <li><a href="#" onclick="viewService('build'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Construction</a></li>
+                            <li><a href="#" onclick="viewService('remodel'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Remodelling</a></li>
+                            <li><a href="#" onclick="viewService('pm'); return false;" class="hover:text-primary transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Project Management</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+       </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
     <footer class="bg-dark-surface border-t border-white/5 pt-20 pb-10">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
@@ -1501,13 +1643,133 @@
             <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
                 <p>&copy; 2024 Green Building Creation. All rights reserved.</p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition">Terms of Service</a>
-                    <a href="#" class="hover:text-white transition">Sitemap</a>
+                    <!-- Updated Footer Links to use showPage -->
+                    <a href="#" onclick="showPage('privacy'); return false;" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" onclick="showPage('terms'); return false;" class="hover:text-white transition">Terms of Service</a>
+                    <a href="#" onclick="showPage('sitemap'); return false;" class="hover:text-white transition">Sitemap</a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
+        import { getAuth, signInAnonymously, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js';
+        import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBv3wYFNQj3Inc8ANywO3gSvSVvfRITPZ0",
+            authDomain: "green-building-creations.firebaseapp.com",
+            projectId: "green-building-creations",
+            storageBucket: "green-building-creations.firebasestorage.app",
+            messagingSenderId: "997933139586",
+            appId: "1:997933139586:web:f86d42e93de510af82969b",
+            measurementId: "G-GV7WPK5NQQ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        
+        // Environment handling for AppID
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'green-building-web-v1';
+        let currentUser = null;
+
+        // Initialize Auth
+        signInAnonymously(auth).catch((error) => {
+            console.error("Auth Error", error);
+        });
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                currentUser = user;
+                console.log("Firebase Auth Connected");
+            }
+        });
+
+        // Toast Function
+        window.showToast = function(type, title, message) {
+            const container = document.getElementById('toast-container');
+            const icon = document.getElementById('toast-icon');
+            const titleEl = document.getElementById('toast-title');
+            const msgEl = document.getElementById('toast-message');
+
+            container.className = `rounded-lg shadow-2xl p-4 flex items-center space-x-3 border border-white/10 ${type === 'success' ? 'toast-success' : 'toast-error'}`;
+            
+            if(type === 'success') {
+                icon.innerHTML = '<i class="fas fa-check-circle text-green-500"></i>';
+            } else {
+                icon.innerHTML = '<i class="fas fa-exclamation-circle text-red-500"></i>';
+            }
+
+            titleEl.textContent = title;
+            msgEl.textContent = message;
+
+            container.classList.add('show');
+
+            setTimeout(() => {
+                container.classList.remove('show');
+            }, 5000);
+        }
+
+        // Form Submission Logic
+        const submitBtn = document.getElementById('submit-contact-btn');
+        if(submitBtn) {
+            submitBtn.addEventListener('click', async () => {
+                if (!currentUser) {
+                    window.showToast('error', 'Connection Error', 'Please wait while we connect to the server.');
+                    return;
+                }
+
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+
+                // Basic Validation
+                if(!name || !email || !message) {
+                    window.showToast('error', 'Missing Information', 'Please fill in Name, Email, and Message fields.');
+                    return;
+                }
+
+                // UI Loading State
+                const originalBtnText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+
+                try {
+                    // Follow Rule 1 for Path Structure
+                    await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'contact_messages'), {
+                        name: name,
+                        phone: phone,
+                        email: email,
+                        subject: subject,
+                        message: message,
+                        createdAt: serverTimestamp(),
+                        userId: currentUser.uid // Storing anonymous ID for reference if needed
+                    });
+
+                    window.showToast('success', 'Message Sent!', 'We have received your message and will contact you shortly.');
+                    
+                    // Clear Form
+                    document.getElementById('name').value = '';
+                    document.getElementById('phone').value = '';
+                    document.getElementById('email').value = '';
+                    document.getElementById('subject').value = '';
+                    document.getElementById('message').value = '';
+
+                } catch (error) {
+                    console.error("Error adding document: ", error);
+                    window.showToast('error', 'Submission Failed', 'Something went wrong. Please try again or call us directly.');
+                } finally {
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+    </script>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -1554,6 +1816,7 @@
         let currentSlide = 0;
 
         function nextSlide() {
+            if(slides.length === 0) return;
             slides[currentSlide].classList.remove('active');
             slides[currentSlide].classList.add('exit');
             
@@ -1565,14 +1828,23 @@
             currentSlide = next;
         }
 
-        setInterval(nextSlide, 5000); 
-        slides[0].classList.add('active');
+        if(slides.length > 0) {
+            setInterval(nextSlide, 5000); 
+            slides[0].classList.add('active');
+        }
 
 
-        function showPage(pageId) {
+        // Make showPage available globally for onclick events
+        window.showPage = function(pageId) {
             window.scrollTo({ top: 0, behavior: 'smooth' });
             document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
+            const targetPage = document.getElementById(pageId);
+            if(targetPage) {
+                targetPage.classList.add('active');
+            } else {
+                console.error('Page not found:', pageId);
+                return;
+            }
             
             document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
             const activeLink = document.getElementById('nav-' + pageId);
@@ -1582,122 +1854,92 @@
             isHomePage = (pageId === 'home');
             
             // Reset Navbar to visible when changing pages
-            navbar.classList.remove('nav-hidden');
+            if(navbar) navbar.classList.remove('nav-hidden');
             
             // Force re-check of scroll state for navbar style
             window.dispatchEvent(new Event('scroll'));
 
             // Close mobile menu
-            document.getElementById('mobile-menu').classList.add('hidden');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if(mobileMenu) mobileMenu.classList.add('hidden');
         }
 
         // Initialize Nav State
         showPage('home'); 
 
-        function mobileMenuToggle() {
+        window.mobileMenuToggle = function() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         }
-        document.getElementById('mobile-menu-btn').addEventListener('click', mobileMenuToggle);
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        if(mobileBtn) mobileBtn.addEventListener('click', mobileMenuToggle);
 
         // --- NEW: About Tab Logic --- //
-        function openAboutTab(tabName) {
-            // Hide all contents
+        window.openAboutTab = function(tabName) {
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
             });
-            // Remove active style from all buttons
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            // Show specific content and activate button
-            document.getElementById('tab-' + tabName).classList.add('active');
-            document.getElementById('btn-' + tabName).classList.add('active');
-        }
-
-        // --- NEW: Accordion Logic --- //
-        function toggleValue(element) {
-            // Close other accordions
-            document.querySelectorAll('.accordion-item').forEach(item => {
-                if (item !== element) {
-                    item.classList.remove('active');
-                }
-            });
-            // Toggle clicked accordion
-            element.classList.toggle('active');
+            const tabContent = document.getElementById('tab-' + tabName);
+            const tabBtn = document.getElementById('btn-' + tabName);
+            if(tabContent) tabContent.classList.add('active');
+            if(tabBtn) tabBtn.classList.add('active');
         }
 
         // --- View Logic --- //
-        
-        function viewMission() {
-            // Deprecated by new Tab Logic, kept for safety or if linked elsewhere
-            alert("Our Mission: To be client-centric in the delivery of professional services through innovations in green solutions. We aim to reduce environmental impact while maximizing aesthetic value and functionality for every client.");
-        }
-        function viewVision() {
-             // Deprecated by new Tab Logic
-            alert("Our Vision: To become the leading architecture firm in Sub-Saharan Africa, setting the standard for sustainable development, ethical construction, and modern design excellence.");
-        }
-
         const serviceData = {
             'arch': { 
                 title: 'Architectural Design', 
                 icon: 'fas fa-pencil-ruler',
-                // New Image Added
                 image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
                 content: '<p>Our architectural design process is a blend of art and science. We start by understanding your lifestyle or business needs, then proceed to sketch concepts that maximize natural light, ventilation, and spatial flow.</p><h4 class="text-white font-bold mt-6 mb-2">Key Features:</h4><ul class="list-disc pl-5"><li>3D Visualization & Walkthroughs</li><li>Sustainable Material Selection</li><li>Regulatory Compliance Checks</li></ul>' 
             },
             'eng': { 
                 title: 'Engineering Services', 
                 icon: 'fas fa-cogs',
-                // New Image Added
                 image: 'https://images.unsplash.com/photo-1581094794329-cd0f1df9389b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
                 content: '<p>Structural integrity is non-negotiable. Our engineers use advanced software to simulate loads and stresses, ensuring your building stands strong against time and elements.</p><h4 class="text-white font-bold mt-6 mb-2">Our Focus:</h4><ul class="list-disc pl-5"><li>Structural Analysis</li><li>MEP (Mechanical, Electrical, Plumbing) Design</li><li>Safety Assessments</li></ul>' 
             },
             'remodel': { 
                 title: 'Building Remodelling', 
                 icon: 'fas fa-hammer', 
-                // New Image Added
                 image: 'https://pgblzmoibxrqyhowsvmg.supabase.co/storage/v1/object/public/green_house/remodelling.jpeg',
                 content: '<p>Transform outdated spaces into modern marvels. We assess existing structures to enhance functionality and aesthetics without compromising integrity.</p>' 
             },
             'pm': { 
                 title: 'Project Management', 
                 icon: 'fas fa-tasks', 
-                // New Image Added
                 image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
                 content: '<p>We handle the logistics so you don\'t have to. From budget tracking to timeline management, our PMs ensure smooth delivery.</p>' 
             },
             'reno': { 
                 title: 'Building Renovations', 
                 icon: 'fas fa-sync-alt', 
-                // New Image Added
                 image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
                 content: '<p>Our core expertise lies in transforming architectural visions into enduring structures. From breaking ground to the final coat of paint, our construction team delivers precision, efficiency, and uncompromising quality. We approach both new developments and complex renovations with the same level of dedication and professionalism..</p>' 
             },
             'survey': { 
                 title: 'Surveying', 
                 icon: 'fas fa-map-marked-alt', 
-                // New Image Added
                 image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
                 content: '<p>Precision mapping for perfect foundations. We use the latest topographic equipment for accurate site analysis.</p>' 
             },
-            'realestate': { title: 'Real Estate Consultation', icon: 'fas fa-home', content: '<p>Expert market advice for developers and investors. We analyze trends to maximize your ROI.</p>' },
             'build': {
                 title: 'Construction & Renovation',
                 icon: 'fas fa-hard-hat',
-                // New Image Added
                 image: 'https://pgblzmoibxrqyhowsvmg.supabase.co/storage/v1/object/public/green_house/WhatsApp%20Image%202026-02-02%20at%204.24.06%20AM.jpeg',
                 content: '<p>Our core expertise lies in bringing architectural visions to life. From breaking ground to the final coat of paint, our construction team ensures precision, speed, and quality. We handle both new builds and complex renovations with equal dedication.</p><h4 class="text-white font-bold mt-6 mb-2">What We Deliver:</h4><ul class="list-disc pl-5"><li>Turnkey Construction Projects</li><li>Complete Home Renovations</li><li>Commercial Build-outs</li><li>Commercial Building Maintenance</li><li>Site Supervision & Safety Management</li></ul>'
             }
         };
 
-        function viewService(id) {
+        window.viewService = function(id) {
             const s = serviceData[id];
             if(!s) return;
             document.getElementById('serv-title').textContent = s.title;
             document.getElementById('serv-icon').className = s.icon;
             document.getElementById('serv-content').innerHTML = s.content;
             
-            // New Image Logic
             const imgEl = document.getElementById('serv-img');
             if(s.image) {
                 imgEl.src = s.image;
@@ -1705,11 +1947,9 @@
             } else {
                 imgEl.parentElement.style.display = 'none';
             }
-            
             showPage('service-detail-view');
         }
 
-        // --- NEW: Advantage Logic --- //
         const advantageData = {
             'eco': {
                 title: 'Eco-Centric Approach',
@@ -1756,7 +1996,7 @@
             }
         };
 
-        function viewAdvantage(id) {
+        window.viewAdvantage = function(id) {
             const a = advantageData[id];
             if(!a) return;
             document.getElementById('adv-title').textContent = a.title;
